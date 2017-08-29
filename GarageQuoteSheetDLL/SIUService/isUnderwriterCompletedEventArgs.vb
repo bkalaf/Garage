@@ -1,0 +1,29 @@
+Imports Microsoft.VisualBasic.CompilerServices
+Imports System
+Imports System.CodeDom.Compiler
+Imports System.ComponentModel
+Imports System.Diagnostics
+Imports System.Runtime.CompilerServices
+
+Namespace GarageQuoteSheetDLL.SIUService
+	<DebuggerStepThrough>
+	<DesignerCategory("code")>
+	<GeneratedCode("System.Web.Services", "2.0.50727.3053")>
+	Public Class isUnderwriterCompletedEventArgs
+		Inherits AsyncCompletedEventArgs
+		Private results As Object()
+
+		''' <remarks />
+		Public ReadOnly Property Result As Boolean
+			Get
+				Me.RaiseExceptionIfNecessary()
+				Return Conversions.ToBoolean(Me.results(0))
+			End Get
+		End Property
+
+		Friend Sub New(ByVal results As Object(), ByVal exception As System.Exception, ByVal cancelled As Boolean, ByVal userState As Object)
+			MyBase.New(exception, cancelled, RuntimeHelpers.GetObjectValue(userState))
+			Me.results = results
+		End Sub
+	End Class
+End Namespace

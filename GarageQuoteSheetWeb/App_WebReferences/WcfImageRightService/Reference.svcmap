@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d8da7923-fc0b-49f6-a1c3-134921e3f00e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://siu-alp-devweb-001:85/ImageRightService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ImageRightService.xsd" MetadataType="Schema" ID="333019fb-9da1-49c4-909a-06802ba34ee6" SourceId="1" SourceUrl="http://siu-alp-devweb-001:85/ImageRightService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ImageRightService1.xsd" MetadataType="Schema" ID="f6c39dcf-9bbe-4ec3-9d59-f2cb89810e33" SourceId="1" SourceUrl="http://siu-alp-devweb-001:85/ImageRightService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ImageRightService2.xsd" MetadataType="Schema" ID="e4b3e307-63e6-4db9-9ac2-4d5f9146ef6b" SourceId="1" SourceUrl="http://siu-alp-devweb-001:85/ImageRightService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ImageRightService.wsdl" MetadataType="Wsdl" ID="d764b6ba-19da-48f5-8fe0-808764c89ac2" SourceId="1" SourceUrl="http://siu-alp-devweb-001:85/ImageRightService.svc?wsdl" />
+    <MetadataFile FileName="ImageRightService3.xsd" MetadataType="Schema" ID="b8f7a780-b717-4db5-9f4b-36853c7da2ea" SourceId="1" SourceUrl="http://siu-alp-devweb-001:85/ImageRightService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ImageRightService.disco" MetadataType="Disco" ID="7401af6c-71f9-497a-92da-d22ef9aca91a" SourceId="1" SourceUrl="http://siu-alp-devweb-001:85/ImageRightService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

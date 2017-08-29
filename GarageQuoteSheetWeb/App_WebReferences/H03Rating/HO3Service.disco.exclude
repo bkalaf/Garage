@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://devtest01/Raters/HO3Service.asmx?wsdl" docRef="http://devtest01/Raters/HO3Service.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://devtest01/Raters/HO3Service.asmx" xmlns:q1="http://siuins.com/" binding="q1:HO3ServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://devtest01/Raters/HO3Service.asmx" xmlns:q2="http://siuins.com/" binding="q2:HO3ServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

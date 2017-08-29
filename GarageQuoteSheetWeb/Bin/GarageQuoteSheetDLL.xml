@@ -1,0 +1,206 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+GarageQuoteSheetDLL
+</name>
+</assembly>
+<members>
+<member name="P:GarageQuoteSheetDLL.H03.H03Agent.AgentAddress1">
+	<summary>
+ Agent's Address
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.H03.H03Agent.AgentCode">
+	<summary>
+ AgentCode
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.H03.H03Agent.AgentPhone">
+	<summary>
+ Agent's Phone number
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.H03.H03Agent.QuoteReplyOption">
+	<summary>
+	</summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.Agent.AgentEmailId">
+	<summary>
+ Agent's EmailId
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.Agent.AgentFax">
+	<summary>
+ Agent's Fax Number
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.Agent.AgentFirstName">
+	<summary>
+ Agent's Name
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:GarageQuoteSheetDLL.Agent">
+	<summary>
+ This class represents entity Agent's contact details.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:GarageQuoteSheetDLL.DAL.DataAccessModel">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.GarageOperations.AreAllVehiclesListed">
+	<summary>
+ For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.GarageOperations.BusinessName">
+	<summary>
+ For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.GarageOperations.City">
+	<summary>
+ For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.GarageOperations.County">
+	<summary>
+ For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.GarageOperations.FillingDetails">
+	<summary>
+ For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.GarageOperations.OperationCities">
+	<summary>
+ For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.GarageOperations.OperationInsured">
+	<summary>
+ For Commerical Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.GarageOperations.YearsInsured">
+	<summary>
+ For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:GarageQuoteSheetDLL.H03QuoteDataModel.GetAgencyInformation(System.String)">
+	<summary>
+ 'Get Agency Information Based On AgencyId
+ </summary>
+	<param name="strAgencyId"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.CoverageDetail.AdditionalInfo">
+	<summary>
+  For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.CoverageDetail.HiredDetails">
+	<summary>
+  For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.CoverageDetail.ISAddtnlInsured">
+	<summary>
+  For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.CoverageDetail.IsCargo">
+	<summary>
+  For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.CoverageDetail.IsReeferBreaking">
+	<summary>
+  For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.CoverageDetail.LiabilityLimit_Split">
+	<summary>
+  For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.CoverageDetail.NonOwnedDetails">
+	<summary>
+  For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:GarageQuoteSheetDLL.CoverageDetail.UnInsuredMotorist_Split">
+	<summary>
+  For Commercial Quote
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="T:GarageQuoteSheetDLL.GenericCollection`1">
+	<summary>
+ This class represents Generic collection. 
+ </summary>
+	<typeparam name="GenericType"></typeparam>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

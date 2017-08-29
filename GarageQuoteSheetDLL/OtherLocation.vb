@@ -1,0 +1,65 @@
+Imports log4net
+Imports System
+Imports System.Reflection
+Imports XmlUtils
+
+Namespace GarageQuoteSheetDLL
+	Public Class OtherLocation
+		Implements IEntity
+		Private xmlConfig As XmlUtils.XmlConfig
+
+		Private Const PROPERTIES As String = "GarageQuoteSheetXML.xml"
+
+		Private Const COMP_VBridge As String = "GarageQuoteSheet"
+
+		Private Const CONTEXT As String = "GarageQuoteSheet"
+
+		Private Shared logger As ILog
+
+		Private type As System.Type
+
+		Private methodInfo As System.Reflection.MethodInfo
+
+		Private _intID As Integer
+
+		Private _intGarageOperationID As Integer
+
+		Private _strOperationLocation As String
+
+		Public Property GarageOperationID As Integer
+			Get
+				Return Me._intGarageOperationID
+			End Get
+			Set(ByVal value As Integer)
+				Me._intGarageOperationID = value
+			End Set
+		End Property
+
+		Public Property OperationLocation As String
+			Get
+				Return Me._strOperationLocation
+			End Get
+			Set(ByVal value As String)
+				Me._strOperationLocation = value
+			End Set
+		End Property
+
+		Public Property OtherLocationId As Integer Implements IEntity.Id
+			Get
+				Return Me._intID
+			End Get
+			Set(ByVal value As Integer)
+				Me._intID = value
+			End Set
+		End Property
+
+		Shared Sub New()
+			OtherLocation.logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType)
+		End Sub
+
+		Public Sub New()
+			MyBase.New()
+			Me.xmlConfig = New XmlUtils.XmlConfig("GarageQuoteSheet", "GarageQuoteSheetXML.xml")
+		End Sub
+	End Class
+End Namespace

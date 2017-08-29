@@ -1,0 +1,30 @@
+<FactBase>
+  <LiteralFact id="construction" source="0">Frame</LiteralFact>
+  <LiteralFact id="occupancy" source="3">OWNER OCCUPIED</LiteralFact>
+  <LiteralFact id="sinkholeExcluded" source="0">No</LiteralFact>
+  <LiteralFact id="pets" source="0">No</LiteralFact>
+  <LiteralFact id="pool" source="0">No</LiteralFact>
+  <LiteralFact id="lawLimitCoverageA" source="0">Yes</LiteralFact>
+  <LiteralFact id="roofAge" source="0">7</LiteralFact>
+  <NumericFact id="persPropAdditionalPremium" source="3">100</NumericFact>
+  <LiteralFact id="windProtectiveDevices" source="0">Impact Resistant Glass</LiteralFact>
+  <NumericFact id="lossOfUse" source="3">30000</NumericFact>
+  <LiteralFact id="windHailExclusion" source="0">No</LiteralFact>
+  <LiteralFact id="county" source="0">CALHOUN</LiteralFact>
+  <NumericFact id="deductible" source="0">1000</NumericFact>
+  <NumericFact id="nonWindLossesLast3" source="0">0</NumericFact>
+  <NumericFact id="windLossesLast3" source="0">0</NumericFact>
+  <LiteralFact id="trampoline" source="0">Yes</LiteralFact>
+  <LiteralFact id="yearBuilt" source="0">1977</LiteralFact>
+  <NumericFact id="additionalPremiumSum" source="3">194</NumericFact>
+  <NumericFact id="liability" source="0">500000</NumericFact>
+  <NumericFact id="protectionClass" source="0">7</NumericFact>
+  <NumericFact id="persProp" source="0">100000</NumericFact>
+  <NumericFact id="windDeductible" source="0">0.05</NumericFact>
+  <NumericFact id="medPay" source="3">2000</NumericFact>
+  <NumericFact id="baseRate" source="3">1665</NumericFact>
+  <LiteralFact id="alarmCredit" source="0">Monitored Central Station</LiteralFact>
+  <NumericFact id="miToTidalWater" source="0">7</NumericFact>
+  <NumericFact id="structures" source="3">15000</NumericFact>
+  <NumericFact id="dwelling" source="0">150000</NumericFact>
+</FactBase>

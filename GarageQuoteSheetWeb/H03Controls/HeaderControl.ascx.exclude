@@ -1,0 +1,39 @@
+<%@ Control Language="VB" AutoEventWireup="False" CodeFile="HeaderControl.ascx.vb"  Inherits="UserControlH03.HeaderControl" %>
+		
+		
+		
+		
+		 
+			<table width="900" border="0" cellspacing="0" cellpadding="0" background="images/headerback.jpg" height="150">
+				<tr>
+					<td align="left" valign="top"><h1><asp:Label id="TitleLabel" runat="server" /></h1></td>
+
+				</tr>
+			</table>
+			<%--<table width="850" border="0" cellspacing="0" cellpadding="0">
+                    <tr height="30">
+                        <td width="1050" background="../images/navback.jpg" style="height: 30px">
+                            <div align="center">
+                                <ul id="nav">
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>--%>
+			
+                
+            
+          
+		
+		
+		
+		
+		
+			
+			
+
+		
+
+		
+		
+

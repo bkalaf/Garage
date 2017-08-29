@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetTaxesAndFees">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Premium" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Effective" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaxesAndFeesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTaxesAndFeesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaxesAndFeesForInvoicing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Premium" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Effective" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaxesAndFeesForInvoicingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTaxesAndFeesForInvoicingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTaxesAndFeesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTaxesAndFees" />
+  </wsdl:message>
+  <wsdl:message name="GetTaxesAndFeesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTaxesAndFeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTaxesAndFeesForInvoicingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTaxesAndFeesForInvoicing" />
+  </wsdl:message>
+  <wsdl:message name="GetTaxesAndFeesForInvoicingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTaxesAndFeesForInvoicingResponse" />
+  </wsdl:message>
+  <wsdl:portType name="StateTaxesAndFeesSoap">
+    <wsdl:operation name="GetTaxesAndFees">
+      <wsdl:input message="tns:GetTaxesAndFeesSoapIn" />
+      <wsdl:output message="tns:GetTaxesAndFeesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaxesAndFeesForInvoicing">
+      <wsdl:input message="tns:GetTaxesAndFeesForInvoicingSoapIn" />
+      <wsdl:output message="tns:GetTaxesAndFeesForInvoicingSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StateTaxesAndFeesSoap" type="tns:StateTaxesAndFeesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTaxesAndFees">
+      <soap:operation soapAction="http://tempuri.org/GetTaxesAndFees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaxesAndFeesForInvoicing">
+      <soap:operation soapAction="http://tempuri.org/GetTaxesAndFeesForInvoicing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="StateTaxesAndFeesSoap12" type="tns:StateTaxesAndFeesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTaxesAndFees">
+      <soap12:operation soapAction="http://tempuri.org/GetTaxesAndFees" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaxesAndFeesForInvoicing">
+      <soap12:operation soapAction="http://tempuri.org/GetTaxesAndFeesForInvoicing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StateTaxesAndFees">
+    <wsdl:port name="StateTaxesAndFeesSoap" binding="tns:StateTaxesAndFeesSoap">
+      <soap:address location="http://siu-alp-devweb-001:90/HO3Service/StateTaxesAndFees.asmx" />
+    </wsdl:port>
+    <wsdl:port name="StateTaxesAndFeesSoap12" binding="tns:StateTaxesAndFeesSoap12">
+      <soap12:address location="http://siu-alp-devweb-001:90/HO3Service/StateTaxesAndFees.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

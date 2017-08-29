@@ -1,0 +1,896 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetTerritoryCountyInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strZipcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTerritoryCountyInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTerritoryCountyInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBuiltYearCreditSurcharge">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strState" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBuiltYearCreditSurchargeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBuiltYearCreditSurchargeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoofAgeCreditSurcharge">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strState" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoofAgeCreditSurchargeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRoofAgeCreditSurchargeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWindDeductableCreditSurcharge">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strState" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWindDeductableCreditSurchargeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWindDeductableCreditSurchargeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProtectionClass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strState" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProtectionClassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProtectionClassResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConstructionType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strState" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConstructionTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConstructionTypeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProtectiveDevice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strState" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProtectiveDeviceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProtectiveDeviceResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOccupancy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strState" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOccupancyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOccupancyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isUnderwriter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IpAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isUnderwriterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isUnderwriterResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPool">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strState" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPoolResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPoolResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNCCIClassCode">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNCCIClassCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNCCIClassCodeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNCCIClassDescription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNCCIClassDescriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNCCIClassDescriptionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCounty">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strZipCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strState" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCountyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCountyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLookupData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intParentTable" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLookupDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLookupDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLookupDataByStateCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intParentTable" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strState" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLookupDataByStateCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLookupDataByStateCodeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCountyByZipCodeForAL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strZipcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCountyByZipCodeForALResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCountyByZipCodeForALResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCountyByZipCodeForSC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strZipcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCountyByZipCodeForSCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCountyByZipCodeForSCResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStateByZipCodeForALSCGA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strZipcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStateByZipCodeForALSCGAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStateByZipCodeForALSCGAResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTerritoryCountyInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTerritoryCountyInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetTerritoryCountyInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTerritoryCountyInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBuiltYearCreditSurchargeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBuiltYearCreditSurcharge" />
+  </wsdl:message>
+  <wsdl:message name="GetBuiltYearCreditSurchargeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBuiltYearCreditSurchargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoofAgeCreditSurchargeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoofAgeCreditSurcharge" />
+  </wsdl:message>
+  <wsdl:message name="GetRoofAgeCreditSurchargeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoofAgeCreditSurchargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWindDeductableCreditSurchargeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWindDeductableCreditSurcharge" />
+  </wsdl:message>
+  <wsdl:message name="GetWindDeductableCreditSurchargeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWindDeductableCreditSurchargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProtectionClassSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProtectionClass" />
+  </wsdl:message>
+  <wsdl:message name="GetProtectionClassSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProtectionClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConstructionTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConstructionType" />
+  </wsdl:message>
+  <wsdl:message name="GetConstructionTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConstructionTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProtectiveDeviceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProtectiveDevice" />
+  </wsdl:message>
+  <wsdl:message name="GetProtectiveDeviceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProtectiveDeviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOccupancySoapIn">
+    <wsdl:part name="parameters" element="tns:GetOccupancy" />
+  </wsdl:message>
+  <wsdl:message name="GetOccupancySoapOut">
+    <wsdl:part name="parameters" element="tns:GetOccupancyResponse" />
+  </wsdl:message>
+  <wsdl:message name="isUnderwriterSoapIn">
+    <wsdl:part name="parameters" element="tns:isUnderwriter" />
+  </wsdl:message>
+  <wsdl:message name="isUnderwriterSoapOut">
+    <wsdl:part name="parameters" element="tns:isUnderwriterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPoolSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPool" />
+  </wsdl:message>
+  <wsdl:message name="GetPoolSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPoolResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNCCIClassCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNCCIClassCode" />
+  </wsdl:message>
+  <wsdl:message name="GetNCCIClassCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNCCIClassCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNCCIClassDescriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNCCIClassDescription" />
+  </wsdl:message>
+  <wsdl:message name="GetNCCIClassDescriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNCCIClassDescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCountySoapIn">
+    <wsdl:part name="parameters" element="tns:GetCounty" />
+  </wsdl:message>
+  <wsdl:message name="GetCountySoapOut">
+    <wsdl:part name="parameters" element="tns:GetCountyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLookupDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLookupData" />
+  </wsdl:message>
+  <wsdl:message name="GetLookupDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLookupDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLookupDataByStateCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLookupDataByStateCode" />
+  </wsdl:message>
+  <wsdl:message name="GetLookupDataByStateCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLookupDataByStateCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCountyByZipCodeForALSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCountyByZipCodeForAL" />
+  </wsdl:message>
+  <wsdl:message name="GetCountyByZipCodeForALSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCountyByZipCodeForALResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCountyByZipCodeForSCSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCountyByZipCodeForSC" />
+  </wsdl:message>
+  <wsdl:message name="GetCountyByZipCodeForSCSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCountyByZipCodeForSCResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStateByZipCodeForALSCGASoapIn">
+    <wsdl:part name="parameters" element="tns:GetStateByZipCodeForALSCGA" />
+  </wsdl:message>
+  <wsdl:message name="GetStateByZipCodeForALSCGASoapOut">
+    <wsdl:part name="parameters" element="tns:GetStateByZipCodeForALSCGAResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="GetTerritoryCountyInfo">
+      <wsdl:input message="tns:GetTerritoryCountyInfoSoapIn" />
+      <wsdl:output message="tns:GetTerritoryCountyInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBuiltYearCreditSurcharge">
+      <wsdl:input message="tns:GetBuiltYearCreditSurchargeSoapIn" />
+      <wsdl:output message="tns:GetBuiltYearCreditSurchargeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoofAgeCreditSurcharge">
+      <wsdl:input message="tns:GetRoofAgeCreditSurchargeSoapIn" />
+      <wsdl:output message="tns:GetRoofAgeCreditSurchargeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWindDeductableCreditSurcharge">
+      <wsdl:input message="tns:GetWindDeductableCreditSurchargeSoapIn" />
+      <wsdl:output message="tns:GetWindDeductableCreditSurchargeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProtectionClass">
+      <wsdl:input message="tns:GetProtectionClassSoapIn" />
+      <wsdl:output message="tns:GetProtectionClassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConstructionType">
+      <wsdl:input message="tns:GetConstructionTypeSoapIn" />
+      <wsdl:output message="tns:GetConstructionTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProtectiveDevice">
+      <wsdl:input message="tns:GetProtectiveDeviceSoapIn" />
+      <wsdl:output message="tns:GetProtectiveDeviceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOccupancy">
+      <wsdl:input message="tns:GetOccupancySoapIn" />
+      <wsdl:output message="tns:GetOccupancySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isUnderwriter">
+      <wsdl:input message="tns:isUnderwriterSoapIn" />
+      <wsdl:output message="tns:isUnderwriterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPool">
+      <wsdl:input message="tns:GetPoolSoapIn" />
+      <wsdl:output message="tns:GetPoolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNCCIClassCode">
+      <wsdl:input message="tns:GetNCCIClassCodeSoapIn" />
+      <wsdl:output message="tns:GetNCCIClassCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNCCIClassDescription">
+      <wsdl:input message="tns:GetNCCIClassDescriptionSoapIn" />
+      <wsdl:output message="tns:GetNCCIClassDescriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCounty">
+      <wsdl:input message="tns:GetCountySoapIn" />
+      <wsdl:output message="tns:GetCountySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupData">
+      <wsdl:input message="tns:GetLookupDataSoapIn" />
+      <wsdl:output message="tns:GetLookupDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupDataByStateCode">
+      <wsdl:input message="tns:GetLookupDataByStateCodeSoapIn" />
+      <wsdl:output message="tns:GetLookupDataByStateCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCountyByZipCodeForAL">
+      <wsdl:input message="tns:GetCountyByZipCodeForALSoapIn" />
+      <wsdl:output message="tns:GetCountyByZipCodeForALSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCountyByZipCodeForSC">
+      <wsdl:input message="tns:GetCountyByZipCodeForSCSoapIn" />
+      <wsdl:output message="tns:GetCountyByZipCodeForSCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStateByZipCodeForALSCGA">
+      <wsdl:input message="tns:GetStateByZipCodeForALSCGASoapIn" />
+      <wsdl:output message="tns:GetStateByZipCodeForALSCGASoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTerritoryCountyInfo">
+      <soap:operation soapAction="http://tempuri.org/GetTerritoryCountyInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBuiltYearCreditSurcharge">
+      <soap:operation soapAction="http://tempuri.org/GetBuiltYearCreditSurcharge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoofAgeCreditSurcharge">
+      <soap:operation soapAction="http://tempuri.org/GetRoofAgeCreditSurcharge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWindDeductableCreditSurcharge">
+      <soap:operation soapAction="http://tempuri.org/GetWindDeductableCreditSurcharge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProtectionClass">
+      <soap:operation soapAction="http://tempuri.org/GetProtectionClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConstructionType">
+      <soap:operation soapAction="http://tempuri.org/GetConstructionType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProtectiveDevice">
+      <soap:operation soapAction="http://tempuri.org/GetProtectiveDevice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOccupancy">
+      <soap:operation soapAction="http://tempuri.org/GetOccupancy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isUnderwriter">
+      <soap:operation soapAction="http://tempuri.org/isUnderwriter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPool">
+      <soap:operation soapAction="http://tempuri.org/GetPool" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNCCIClassCode">
+      <soap:operation soapAction="http://tempuri.org/GetNCCIClassCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNCCIClassDescription">
+      <soap:operation soapAction="http://tempuri.org/GetNCCIClassDescription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCounty">
+      <soap:operation soapAction="http://tempuri.org/GetCounty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupData">
+      <soap:operation soapAction="http://tempuri.org/GetLookupData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupDataByStateCode">
+      <soap:operation soapAction="http://tempuri.org/GetLookupDataByStateCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountyByZipCodeForAL">
+      <soap:operation soapAction="http://tempuri.org/GetCountyByZipCodeForAL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountyByZipCodeForSC">
+      <soap:operation soapAction="http://tempuri.org/GetCountyByZipCodeForSC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStateByZipCodeForALSCGA">
+      <soap:operation soapAction="http://tempuri.org/GetStateByZipCodeForALSCGA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTerritoryCountyInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetTerritoryCountyInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBuiltYearCreditSurcharge">
+      <soap12:operation soapAction="http://tempuri.org/GetBuiltYearCreditSurcharge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoofAgeCreditSurcharge">
+      <soap12:operation soapAction="http://tempuri.org/GetRoofAgeCreditSurcharge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWindDeductableCreditSurcharge">
+      <soap12:operation soapAction="http://tempuri.org/GetWindDeductableCreditSurcharge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProtectionClass">
+      <soap12:operation soapAction="http://tempuri.org/GetProtectionClass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConstructionType">
+      <soap12:operation soapAction="http://tempuri.org/GetConstructionType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProtectiveDevice">
+      <soap12:operation soapAction="http://tempuri.org/GetProtectiveDevice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOccupancy">
+      <soap12:operation soapAction="http://tempuri.org/GetOccupancy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isUnderwriter">
+      <soap12:operation soapAction="http://tempuri.org/isUnderwriter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPool">
+      <soap12:operation soapAction="http://tempuri.org/GetPool" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNCCIClassCode">
+      <soap12:operation soapAction="http://tempuri.org/GetNCCIClassCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNCCIClassDescription">
+      <soap12:operation soapAction="http://tempuri.org/GetNCCIClassDescription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCounty">
+      <soap12:operation soapAction="http://tempuri.org/GetCounty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupData">
+      <soap12:operation soapAction="http://tempuri.org/GetLookupData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupDataByStateCode">
+      <soap12:operation soapAction="http://tempuri.org/GetLookupDataByStateCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountyByZipCodeForAL">
+      <soap12:operation soapAction="http://tempuri.org/GetCountyByZipCodeForAL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountyByZipCodeForSC">
+      <soap12:operation soapAction="http://tempuri.org/GetCountyByZipCodeForSC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStateByZipCodeForALSCGA">
+      <soap12:operation soapAction="http://tempuri.org/GetStateByZipCodeForALSCGA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://siu-alp-devweb-001:90/SIUServices/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://siu-alp-devweb-001:90/SIUServices/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

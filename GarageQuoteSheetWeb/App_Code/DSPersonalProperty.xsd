@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSPersonalProperty" targetNamespace="http://tempuri.org/DSPersonalProperty.xsd" xmlns:mstns="http://tempuri.org/DSPersonalProperty.xsd" xmlns="http://tempuri.org/DSPersonalProperty.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="HO3ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="HO3ConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.HO3ConnectionString.ConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DTPersonalPropertyTableAdapter" GeneratorDataComponentClassName="DTPersonalPropertyTableAdapter" Name="DTPersonalProperty" UserDataComponentName="DTPersonalPropertyTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="HO3ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     '' AS HomeOwnerQuoteId, '' AS HomeOwnerQuoteNumber, '' AS AgentId, '' AS Contact, '' AS Phone, '' AS Email, '' AS BaseRate, 
+                      '' AS AdditionalPremiums, '' AS TotalPremium, '' AS Surcharges, '' AS Discretion, '' AS InspectionFee, '' AS SalesTax, '' AS FSLSO, '' AS FHCF, 
+                      '' AS CPICA, '' AS EMG, '' AS GrandTotal, '' AS LossesDescription, '' AS Amount, '' AS Outcome, '' AS TypeOfLosses, '' AS A_DwellingAmount, 
+                      '' AS C_PersonalProperty, '' AS E_Liability, '' AS F_MedPay, '' AS DeductibleAmount, '' AS WindandHailExclusion, '' AS Sinkholeexclusion, 
+                      '' AS Ordinance, '' AS FName, '' AS MInitial, '' AS LName, '' AS Address1, '' AS Address2, '' AS City, '' AS State, '' AS Zip, '' AS County, '' AS HomePhone, 
+                      '' AS WorkPhone, '' AS TerritoryCode, '' AS TerritoryName, '' AS MAddress1, '' AS MAddress2, '' AS MCity, '' AS MState, '' AS MZip, '' AS MCounty, 
+                      '' AS ConstructionType, '' AS NumberOfFamilies, '' AS YearBuilt, '' AS FeetFromHyd, '' AS ProtectionClass, '' AS MilestoStation, '' AS SqFootage, 
+                      '' AS MilestoCoastal, '' AS Stories, '' AS Pool, '' AS Occupancy, '' AS Trampoline, '' AS MilesToFireStation, '' AS B_AdjacentStructure, '' AS D_LossofUse,
+                       '' AS WindDeductible, '' AS AgencyName, '' AS AgencyCompanyName, '' AS AgencyAddress1, '' AS AgencyAddress2, '' AS AgencyCity, 
+                      '' AS AgencyState, '' AS AgencyZip,'' As QuotedDate,'' As UnderwriterName,'' As AdditionalComments</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="HomeOwnerQuoteId" DataSetColumn="HomeOwnerQuoteId" />
+              <Mapping SourceColumn="HomeOwnerQuoteNumber" DataSetColumn="HomeOwnerQuoteNumber" />
+              <Mapping SourceColumn="AgentId" DataSetColumn="AgentId" />
+              <Mapping SourceColumn="Contact" DataSetColumn="Contact" />
+              <Mapping SourceColumn="Phone" DataSetColumn="Phone" />
+              <Mapping SourceColumn="Email" DataSetColumn="Email" />
+              <Mapping SourceColumn="BaseRate" DataSetColumn="BaseRate" />
+              <Mapping SourceColumn="AdditionalPremiums" DataSetColumn="AdditionalPremiums" />
+              <Mapping SourceColumn="TotalPremium" DataSetColumn="TotalPremium" />
+              <Mapping SourceColumn="Surcharges" DataSetColumn="Surcharges" />
+              <Mapping SourceColumn="Discretion" DataSetColumn="Discretion" />
+              <Mapping SourceColumn="InspectionFee" DataSetColumn="InspectionFee" />
+              <Mapping SourceColumn="SalesTax" DataSetColumn="SalesTax" />
+              <Mapping SourceColumn="FSLSO" DataSetColumn="FSLSO" />
+              <Mapping SourceColumn="FHCF" DataSetColumn="FHCF" />
+              <Mapping SourceColumn="CPICA" DataSetColumn="CPICA" />
+              <Mapping SourceColumn="EMG" DataSetColumn="EMG" />
+              <Mapping SourceColumn="GrandTotal" DataSetColumn="GrandTotal" />
+              <Mapping SourceColumn="LossesDescription" DataSetColumn="LossesDescription" />
+              <Mapping SourceColumn="Amount" DataSetColumn="Amount" />
+              <Mapping SourceColumn="Outcome" DataSetColumn="Outcome" />
+              <Mapping SourceColumn="TypeOfLosses" DataSetColumn="TypeOfLosses" />
+              <Mapping SourceColumn="A_DwellingAmount" DataSetColumn="A_DwellingAmount" />
+              <Mapping SourceColumn="C_PersonalProperty" DataSetColumn="C_PersonalProperty" />
+              <Mapping SourceColumn="E_Liability" DataSetColumn="E_Liability" />
+              <Mapping SourceColumn="F_MedPay" DataSetColumn="F_MedPay" />
+              <Mapping SourceColumn="DeductibleAmount" DataSetColumn="DeductibleAmount" />
+              <Mapping SourceColumn="WindandHailExclusion" DataSetColumn="WindandHailExclusion" />
+              <Mapping SourceColumn="Sinkholeexclusion" DataSetColumn="Sinkholeexclusion" />
+              <Mapping SourceColumn="Ordinance" DataSetColumn="Ordinance" />
+              <Mapping SourceColumn="FName" DataSetColumn="FName" />
+              <Mapping SourceColumn="MInitial" DataSetColumn="MInitial" />
+              <Mapping SourceColumn="LName" DataSetColumn="LName" />
+              <Mapping SourceColumn="Address1" DataSetColumn="Address1" />
+              <Mapping SourceColumn="Address2" DataSetColumn="Address2" />
+              <Mapping SourceColumn="City" DataSetColumn="City" />
+              <Mapping SourceColumn="State" DataSetColumn="State" />
+              <Mapping SourceColumn="Zip" DataSetColumn="Zip" />
+              <Mapping SourceColumn="County" DataSetColumn="County" />
+              <Mapping SourceColumn="HomePhone" DataSetColumn="HomePhone" />
+              <Mapping SourceColumn="WorkPhone" DataSetColumn="WorkPhone" />
+              <Mapping SourceColumn="TerritoryCode" DataSetColumn="TerritoryCode" />
+              <Mapping SourceColumn="TerritoryName" DataSetColumn="TerritoryName" />
+              <Mapping SourceColumn="MAddress1" DataSetColumn="MAddress1" />
+              <Mapping SourceColumn="MCity" DataSetColumn="MCity" />
+              <Mapping SourceColumn="MState" DataSetColumn="MState" />
+              <Mapping SourceColumn="MZip" DataSetColumn="MZip" />
+              <Mapping SourceColumn="MCounty" DataSetColumn="MCounty" />
+              <Mapping SourceColumn="ConstructionType" DataSetColumn="ConstructionType" />
+              <Mapping SourceColumn="NumberOfFamilies" DataSetColumn="NumberOfFamilies" />
+              <Mapping SourceColumn="YearBuilt" DataSetColumn="YearBuilt" />
+              <Mapping SourceColumn="FeetFromHyd" DataSetColumn="FeetFromHyd" />
+              <Mapping SourceColumn="ProtectionClass" DataSetColumn="ProtectionClass" />
+              <Mapping SourceColumn="MilestoStation" DataSetColumn="MilestoStation" />
+              <Mapping SourceColumn="SqFootage" DataSetColumn="SqFootage" />
+              <Mapping SourceColumn="MilestoCoastal" DataSetColumn="MilestoCoastal" />
+              <Mapping SourceColumn="Stories" DataSetColumn="Stories" />
+              <Mapping SourceColumn="Pool" DataSetColumn="Pool" />
+              <Mapping SourceColumn="Occupancy" DataSetColumn="Occupancy" />
+              <Mapping SourceColumn="Trampoline" DataSetColumn="Trampoline" />
+              <Mapping SourceColumn="MAddress2" DataSetColumn="MAddress2" />
+              <Mapping SourceColumn="MilesToFireStation" DataSetColumn="MilesToFireStation" />
+              <Mapping SourceColumn="B_AdjacentStructure" DataSetColumn="B_AdjacentStructure" />
+              <Mapping SourceColumn="D_LossofUse" DataSetColumn="D_LossofUse" />
+              <Mapping SourceColumn="WindDeductible" DataSetColumn="WindDeductible" />
+              <Mapping SourceColumn="AgencyName" DataSetColumn="AgencyName" />
+              <Mapping SourceColumn="AgencyCompanyName" DataSetColumn="AgencyCompanyName" />
+              <Mapping SourceColumn="AgencyAddress1" DataSetColumn="AgencyAddress1" />
+              <Mapping SourceColumn="AgencyAddress2" DataSetColumn="AgencyAddress2" />
+              <Mapping SourceColumn="AgencyCity" DataSetColumn="AgencyCity" />
+              <Mapping SourceColumn="AgencyState" DataSetColumn="AgencyState" />
+              <Mapping SourceColumn="AgencyZip" DataSetColumn="AgencyZip" />
+              <Mapping SourceColumn="QuotedDate" DataSetColumn="QuotedDate" />
+              <Mapping SourceColumn="UnderwriterName" DataSetColumn="UnderwriterName" />
+              <Mapping SourceColumn="AdditionalComments" DataSetColumn="AdditionalComments" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSPersonalProperty" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSPersonalProperty" msprop:Generator_DataSetName="DSPersonalProperty">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DTPersonalProperty" msprop:Generator_UserTableName="DTPersonalProperty" msprop:Generator_RowDeletedName="DTPersonalPropertyRowDeleted" msprop:Generator_RowChangedName="DTPersonalPropertyRowChanged" msprop:Generator_RowClassName="DTPersonalPropertyRow" msprop:Generator_RowChangingName="DTPersonalPropertyRowChanging" msprop:Generator_RowEvArgName="DTPersonalPropertyRowChangeEvent" msprop:Generator_RowEvHandlerName="DTPersonalPropertyRowChangeEventHandler" msprop:Generator_TableClassName="DTPersonalPropertyDataTable" msprop:Generator_TableVarName="tableDTPersonalProperty" msprop:Generator_RowDeletingName="DTPersonalPropertyRowDeleting" msprop:Generator_TablePropName="DTPersonalProperty">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HomeOwnerQuoteId" msdata:ReadOnly="true" msprop:Generator_UserColumnName="HomeOwnerQuoteId" msprop:Generator_ColumnPropNameInRow="HomeOwnerQuoteId" msprop:Generator_ColumnVarNameInTable="columnHomeOwnerQuoteId" msprop:Generator_ColumnPropNameInTable="HomeOwnerQuoteIdColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="HomeOwnerQuoteNumber" msdata:ReadOnly="true" msprop:Generator_UserColumnName="HomeOwnerQuoteNumber" msprop:Generator_ColumnPropNameInRow="HomeOwnerQuoteNumber" msprop:Generator_ColumnVarNameInTable="columnHomeOwnerQuoteNumber" msprop:Generator_ColumnPropNameInTable="HomeOwnerQuoteNumberColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AgentId" msdata:ReadOnly="true" msprop:Generator_UserColumnName="AgentId" msprop:Generator_ColumnPropNameInRow="AgentId" msprop:Generator_ColumnVarNameInTable="columnAgentId" msprop:Generator_ColumnPropNameInTable="AgentIdColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Contact" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Contact" msprop:Generator_ColumnPropNameInRow="Contact" msprop:Generator_ColumnVarNameInTable="columnContact" msprop:Generator_ColumnPropNameInTable="ContactColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Phone" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Phone" msprop:Generator_ColumnPropNameInRow="Phone" msprop:Generator_ColumnVarNameInTable="columnPhone" msprop:Generator_ColumnPropNameInTable="PhoneColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Email" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Email" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInTable="EmailColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="BaseRate" msdata:ReadOnly="true" msprop:Generator_UserColumnName="BaseRate" msprop:Generator_ColumnPropNameInRow="BaseRate" msprop:Generator_ColumnVarNameInTable="columnBaseRate" msprop:Generator_ColumnPropNameInTable="BaseRateColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AdditionalPremiums" msdata:ReadOnly="true" msprop:Generator_UserColumnName="AdditionalPremiums" msprop:Generator_ColumnPropNameInRow="AdditionalPremiums" msprop:Generator_ColumnVarNameInTable="columnAdditionalPremiums" msprop:Generator_ColumnPropNameInTable="AdditionalPremiumsColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalPremium" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TotalPremium" msprop:Generator_ColumnPropNameInRow="TotalPremium" msprop:Generator_ColumnVarNameInTable="columnTotalPremium" msprop:Generator_ColumnPropNameInTable="TotalPremiumColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Surcharges" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Surcharges" msprop:Generator_ColumnPropNameInRow="Surcharges" msprop:Generator_ColumnVarNameInTable="columnSurcharges" msprop:Generator_ColumnPropNameInTable="SurchargesColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Discretion" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Discretion" msprop:Generator_ColumnPropNameInRow="Discretion" msprop:Generator_ColumnVarNameInTable="columnDiscretion" msprop:Generator_ColumnPropNameInTable="DiscretionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="InspectionFee" msdata:ReadOnly="true" msprop:Generator_UserColumnName="InspectionFee" msprop:Generator_ColumnPropNameInRow="InspectionFee" msprop:Generator_ColumnVarNameInTable="columnInspectionFee" msprop:Generator_ColumnPropNameInTable="InspectionFeeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SalesTax" msdata:ReadOnly="true" msprop:Generator_UserColumnName="SalesTax" msprop:Generator_ColumnPropNameInRow="SalesTax" msprop:Generator_ColumnVarNameInTable="columnSalesTax" msprop:Generator_ColumnPropNameInTable="SalesTaxColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FSLSO" msdata:ReadOnly="true" msprop:Generator_UserColumnName="FSLSO" msprop:Generator_ColumnPropNameInRow="FSLSO" msprop:Generator_ColumnVarNameInTable="columnFSLSO" msprop:Generator_ColumnPropNameInTable="FSLSOColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FHCF" msdata:ReadOnly="true" msprop:Generator_UserColumnName="FHCF" msprop:Generator_ColumnPropNameInRow="FHCF" msprop:Generator_ColumnVarNameInTable="columnFHCF" msprop:Generator_ColumnPropNameInTable="FHCFColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CPICA" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CPICA" msprop:Generator_ColumnPropNameInRow="CPICA" msprop:Generator_ColumnVarNameInTable="columnCPICA" msprop:Generator_ColumnPropNameInTable="CPICAColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="EMG" msdata:ReadOnly="true" msprop:Generator_UserColumnName="EMG" msprop:Generator_ColumnPropNameInRow="EMG" msprop:Generator_ColumnVarNameInTable="columnEMG" msprop:Generator_ColumnPropNameInTable="EMGColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="GrandTotal" msdata:ReadOnly="true" msprop:Generator_UserColumnName="GrandTotal" msprop:Generator_ColumnPropNameInRow="GrandTotal" msprop:Generator_ColumnVarNameInTable="columnGrandTotal" msprop:Generator_ColumnPropNameInTable="GrandTotalColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="LossesDescription" msdata:ReadOnly="true" msprop:Generator_UserColumnName="LossesDescription" msprop:Generator_ColumnPropNameInRow="LossesDescription" msprop:Generator_ColumnVarNameInTable="columnLossesDescription" msprop:Generator_ColumnPropNameInTable="LossesDescriptionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Amount" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Amount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInTable="AmountColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Outcome" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Outcome" msprop:Generator_ColumnPropNameInRow="Outcome" msprop:Generator_ColumnVarNameInTable="columnOutcome" msprop:Generator_ColumnPropNameInTable="OutcomeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TypeOfLosses" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TypeOfLosses" msprop:Generator_ColumnPropNameInRow="TypeOfLosses" msprop:Generator_ColumnVarNameInTable="columnTypeOfLosses" msprop:Generator_ColumnPropNameInTable="TypeOfLossesColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="A_DwellingAmount" msdata:ReadOnly="true" msprop:Generator_UserColumnName="A_DwellingAmount" msprop:Generator_ColumnPropNameInRow="A_DwellingAmount" msprop:Generator_ColumnVarNameInTable="columnA_DwellingAmount" msprop:Generator_ColumnPropNameInTable="A_DwellingAmountColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="C_PersonalProperty" msdata:ReadOnly="true" msprop:Generator_UserColumnName="C_PersonalProperty" msprop:Generator_ColumnPropNameInRow="C_PersonalProperty" msprop:Generator_ColumnVarNameInTable="columnC_PersonalProperty" msprop:Generator_ColumnPropNameInTable="C_PersonalPropertyColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="E_Liability" msdata:ReadOnly="true" msprop:Generator_UserColumnName="E_Liability" msprop:Generator_ColumnPropNameInRow="E_Liability" msprop:Generator_ColumnVarNameInTable="columnE_Liability" msprop:Generator_ColumnPropNameInTable="E_LiabilityColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="F_MedPay" msdata:ReadOnly="true" msprop:Generator_UserColumnName="F_MedPay" msprop:Generator_ColumnPropNameInRow="F_MedPay" msprop:Generator_ColumnVarNameInTable="columnF_MedPay" msprop:Generator_ColumnPropNameInTable="F_MedPayColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DeductibleAmount" msdata:ReadOnly="true" msprop:Generator_UserColumnName="DeductibleAmount" msprop:Generator_ColumnPropNameInRow="DeductibleAmount" msprop:Generator_ColumnVarNameInTable="columnDeductibleAmount" msprop:Generator_ColumnPropNameInTable="DeductibleAmountColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="WindandHailExclusion" msdata:ReadOnly="true" msprop:Generator_UserColumnName="WindandHailExclusion" msprop:Generator_ColumnPropNameInRow="WindandHailExclusion" msprop:Generator_ColumnVarNameInTable="columnWindandHailExclusion" msprop:Generator_ColumnPropNameInTable="WindandHailExclusionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Sinkholeexclusion" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Sinkholeexclusion" msprop:Generator_ColumnPropNameInRow="Sinkholeexclusion" msprop:Generator_ColumnVarNameInTable="columnSinkholeexclusion" msprop:Generator_ColumnPropNameInTable="SinkholeexclusionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Ordinance" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Ordinance" msprop:Generator_ColumnPropNameInRow="Ordinance" msprop:Generator_ColumnVarNameInTable="columnOrdinance" msprop:Generator_ColumnPropNameInTable="OrdinanceColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FName" msdata:ReadOnly="true" msprop:Generator_UserColumnName="FName" msprop:Generator_ColumnPropNameInRow="FName" msprop:Generator_ColumnVarNameInTable="columnFName" msprop:Generator_ColumnPropNameInTable="FNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="MInitial" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MInitial" msprop:Generator_ColumnPropNameInRow="MInitial" msprop:Generator_ColumnVarNameInTable="columnMInitial" msprop:Generator_ColumnPropNameInTable="MInitialColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="LName" msdata:ReadOnly="true" msprop:Generator_UserColumnName="LName" msprop:Generator_ColumnPropNameInRow="LName" msprop:Generator_ColumnVarNameInTable="columnLName" msprop:Generator_ColumnPropNameInTable="LNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Address1" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Address1" msprop:Generator_ColumnPropNameInRow="Address1" msprop:Generator_ColumnVarNameInTable="columnAddress1" msprop:Generator_ColumnPropNameInTable="Address1Column" type="xs:string" minOccurs="0" />
+              <xs:element name="Address2" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Address2" msprop:Generator_ColumnPropNameInRow="Address2" msprop:Generator_ColumnVarNameInTable="columnAddress2" msprop:Generator_ColumnPropNameInTable="Address2Column" type="xs:string" minOccurs="0" />
+              <xs:element name="City" msdata:ReadOnly="true" msprop:Generator_UserColumnName="City" msprop:Generator_ColumnPropNameInRow="City" msprop:Generator_ColumnVarNameInTable="columnCity" msprop:Generator_ColumnPropNameInTable="CityColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="State" msdata:ReadOnly="true" msprop:Generator_UserColumnName="State" msprop:Generator_ColumnPropNameInRow="State" msprop:Generator_ColumnVarNameInTable="columnState" msprop:Generator_ColumnPropNameInTable="StateColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Zip" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Zip" msprop:Generator_ColumnPropNameInRow="Zip" msprop:Generator_ColumnVarNameInTable="columnZip" msprop:Generator_ColumnPropNameInTable="ZipColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="County" msdata:ReadOnly="true" msprop:Generator_UserColumnName="County" msprop:Generator_ColumnPropNameInRow="County" msprop:Generator_ColumnVarNameInTable="columnCounty" msprop:Generator_ColumnPropNameInTable="CountyColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="HomePhone" msdata:ReadOnly="true" msprop:Generator_UserColumnName="HomePhone" msprop:Generator_ColumnPropNameInRow="HomePhone" msprop:Generator_ColumnVarNameInTable="columnHomePhone" msprop:Generator_ColumnPropNameInTable="HomePhoneColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="WorkPhone" msdata:ReadOnly="true" msprop:Generator_UserColumnName="WorkPhone" msprop:Generator_ColumnPropNameInRow="WorkPhone" msprop:Generator_ColumnVarNameInTable="columnWorkPhone" msprop:Generator_ColumnPropNameInTable="WorkPhoneColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TerritoryCode" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TerritoryCode" msprop:Generator_ColumnPropNameInRow="TerritoryCode" msprop:Generator_ColumnVarNameInTable="columnTerritoryCode" msprop:Generator_ColumnPropNameInTable="TerritoryCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TerritoryName" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TerritoryName" msprop:Generator_ColumnPropNameInRow="TerritoryName" msprop:Generator_ColumnVarNameInTable="columnTerritoryName" msprop:Generator_ColumnPropNameInTable="TerritoryNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="MAddress1" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MAddress1" msprop:Generator_ColumnPropNameInRow="MAddress1" msprop:Generator_ColumnVarNameInTable="columnMAddress1" msprop:Generator_ColumnPropNameInTable="MAddress1Column" type="xs:string" minOccurs="0" />
+              <xs:element name="MCity" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MCity" msprop:Generator_ColumnPropNameInRow="MCity" msprop:Generator_ColumnVarNameInTable="columnMCity" msprop:Generator_ColumnPropNameInTable="MCityColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="MState" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MState" msprop:Generator_ColumnPropNameInRow="MState" msprop:Generator_ColumnVarNameInTable="columnMState" msprop:Generator_ColumnPropNameInTable="MStateColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="MZip" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MZip" msprop:Generator_ColumnPropNameInRow="MZip" msprop:Generator_ColumnVarNameInTable="columnMZip" msprop:Generator_ColumnPropNameInTable="MZipColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="MCounty" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MCounty" msprop:Generator_ColumnPropNameInRow="MCounty" msprop:Generator_ColumnVarNameInTable="columnMCounty" msprop:Generator_ColumnPropNameInTable="MCountyColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ConstructionType" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ConstructionType" msprop:Generator_ColumnPropNameInRow="ConstructionType" msprop:Generator_ColumnVarNameInTable="columnConstructionType" msprop:Generator_ColumnPropNameInTable="ConstructionTypeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="NumberOfFamilies" msdata:ReadOnly="true" msprop:Generator_UserColumnName="NumberOfFamilies" msprop:Generator_ColumnPropNameInRow="NumberOfFamilies" msprop:Generator_ColumnVarNameInTable="columnNumberOfFamilies" msprop:Generator_ColumnPropNameInTable="NumberOfFamiliesColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="YearBuilt" msdata:ReadOnly="true" msprop:Generator_UserColumnName="YearBuilt" msprop:Generator_ColumnPropNameInRow="YearBuilt" msprop:Generator_ColumnVarNameInTable="columnYearBuilt" msprop:Generator_ColumnPropNameInTable="YearBuiltColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FeetFromHyd" msdata:ReadOnly="true" msprop:Generator_UserColumnName="FeetFromHyd" msprop:Generator_ColumnPropNameInRow="FeetFromHyd" msprop:Generator_ColumnVarNameInTable="columnFeetFromHyd" msprop:Generator_ColumnPropNameInTable="FeetFromHydColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ProtectionClass" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ProtectionClass" msprop:Generator_ColumnPropNameInRow="ProtectionClass" msprop:Generator_ColumnVarNameInTable="columnProtectionClass" msprop:Generator_ColumnPropNameInTable="ProtectionClassColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="MilestoStation" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MilestoStation" msprop:Generator_ColumnPropNameInRow="MilestoStation" msprop:Generator_ColumnVarNameInTable="columnMilestoStation" msprop:Generator_ColumnPropNameInTable="MilestoStationColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SqFootage" msdata:ReadOnly="true" msprop:Generator_UserColumnName="SqFootage" msprop:Generator_ColumnPropNameInRow="SqFootage" msprop:Generator_ColumnVarNameInTable="columnSqFootage" msprop:Generator_ColumnPropNameInTable="SqFootageColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="MilestoCoastal" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MilestoCoastal" msprop:Generator_ColumnPropNameInRow="MilestoCoastal" msprop:Generator_ColumnVarNameInTable="columnMilestoCoastal" msprop:Generator_ColumnPropNameInTable="MilestoCoastalColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Stories" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Stories" msprop:Generator_ColumnPropNameInRow="Stories" msprop:Generator_ColumnVarNameInTable="columnStories" msprop:Generator_ColumnPropNameInTable="StoriesColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Pool" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Pool" msprop:Generator_ColumnPropNameInRow="Pool" msprop:Generator_ColumnVarNameInTable="columnPool" msprop:Generator_ColumnPropNameInTable="PoolColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Occupancy" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Occupancy" msprop:Generator_ColumnPropNameInRow="Occupancy" msprop:Generator_ColumnVarNameInTable="columnOccupancy" msprop:Generator_ColumnPropNameInTable="OccupancyColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Trampoline" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Trampoline" msprop:Generator_ColumnPropNameInRow="Trampoline" msprop:Generator_ColumnVarNameInTable="columnTrampoline" msprop:Generator_ColumnPropNameInTable="TrampolineColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="MAddress2" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MAddress2" msprop:Generator_ColumnVarNameInTable="columnMAddress2" msprop:Generator_ColumnPropNameInRow="MAddress2" msprop:Generator_ColumnPropNameInTable="MAddress2Column" type="xs:string" minOccurs="0" />
+              <xs:element name="MilesToFireStation" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MilesToFireStation" msprop:Generator_ColumnPropNameInRow="MilesToFireStation" msprop:Generator_ColumnVarNameInTable="columnMilesToFireStation" msprop:Generator_ColumnPropNameInTable="MilesToFireStationColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="B_AdjacentStructure" msdata:ReadOnly="true" msprop:Generator_UserColumnName="B_AdjacentStructure" msprop:Generator_ColumnPropNameInRow="B_AdjacentStructure" msprop:Generator_ColumnVarNameInTable="columnB_AdjacentStructure" msprop:Generator_ColumnPropNameInTable="B_AdjacentStructureColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="D_LossofUse" msdata:ReadOnly="true" msprop:Generator_UserColumnName="D_LossofUse" msprop:Generator_ColumnPropNameInRow="D_LossofUse" msprop:Generator_ColumnVarNameInTable="columnD_LossofUse" msprop:Generator_ColumnPropNameInTable="D_LossofUseColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="WindDeductible" msdata:ReadOnly="true" msprop:Generator_UserColumnName="WindDeductible" msprop:Generator_ColumnPropNameInRow="WindDeductible" msprop:Generator_ColumnVarNameInTable="columnWindDeductible" msprop:Generator_ColumnPropNameInTable="WindDeductibleColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AgencyName" msdata:ReadOnly="true" msprop:Generator_UserColumnName="AgencyName" msprop:Generator_ColumnPropNameInRow="AgencyName" msprop:Generator_ColumnVarNameInTable="columnAgencyName" msprop:Generator_ColumnPropNameInTable="AgencyNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AgencyCompanyName" msdata:ReadOnly="true" msprop:Generator_UserColumnName="AgencyCompanyName" msprop:Generator_ColumnPropNameInRow="AgencyCompanyName" msprop:Generator_ColumnVarNameInTable="columnAgencyCompanyName" msprop:Generator_ColumnPropNameInTable="AgencyCompanyNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AgencyAddress1" msdata:ReadOnly="true" msprop:Generator_UserColumnName="AgencyAddress1" msprop:Generator_ColumnPropNameInRow="AgencyAddress1" msprop:Generator_ColumnVarNameInTable="columnAgencyAddress1" msprop:Generator_ColumnPropNameInTable="AgencyAddress1Column" type="xs:string" minOccurs="0" />
+              <xs:element name="AgencyAddress2" msdata:ReadOnly="true" msprop:Generator_UserColumnName="AgencyAddress2" msprop:Generator_ColumnPropNameInRow="AgencyAddress2" msprop:Generator_ColumnVarNameInTable="columnAgencyAddress2" msprop:Generator_ColumnPropNameInTable="AgencyAddress2Column" type="xs:string" minOccurs="0" />
+              <xs:element name="AgencyCity" msdata:ReadOnly="true" msprop:Generator_UserColumnName="AgencyCity" msprop:Generator_ColumnVarNameInTable="columnAgencyCity" msprop:Generator_ColumnPropNameInRow="AgencyCity" msprop:Generator_ColumnPropNameInTable="AgencyCityColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AgencyState" msdata:ReadOnly="true" msprop:Generator_UserColumnName="AgencyState" msprop:Generator_ColumnVarNameInTable="columnAgencyState" msprop:Generator_ColumnPropNameInRow="AgencyState" msprop:Generator_ColumnPropNameInTable="AgencyStateColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AgencyZip" msdata:ReadOnly="true" msprop:Generator_UserColumnName="AgencyZip" msprop:Generator_ColumnVarNameInTable="columnAgencyZip" msprop:Generator_ColumnPropNameInRow="AgencyZip" msprop:Generator_ColumnPropNameInTable="AgencyZipColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="QuotedDate" msdata:ReadOnly="true" msprop:Generator_UserColumnName="QuotedDate" msprop:Generator_ColumnPropNameInRow="QuotedDate" msprop:Generator_ColumnVarNameInTable="columnQuotedDate" msprop:Generator_ColumnPropNameInTable="QuotedDateColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="UnderwriterName" msdata:ReadOnly="true" msprop:Generator_UserColumnName="UnderwriterName" msprop:Generator_ColumnVarNameInTable="columnUnderwriterName" msprop:Generator_ColumnPropNameInRow="UnderwriterName" msprop:Generator_ColumnPropNameInTable="UnderwriterNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AdditionalComments" msdata:ReadOnly="true" msprop:Generator_UserColumnName="AdditionalComments" msprop:Generator_ColumnPropNameInRow="AdditionalComments" msprop:Generator_ColumnVarNameInTable="columnAdditionalComments" msprop:Generator_ColumnPropNameInTable="AdditionalCommentsColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

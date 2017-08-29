@@ -1,0 +1,73 @@
+<%@ Control Language="VB" AutoEventWireup="false" CodeFile="H03AgencyInformation.ascx.vb" Inherits="UserControlH03.AgencyInformation" %>
+ <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+  
+                            <fieldset>                				
+                                <legend><strong>Agency Information </strong></legend>
+                                <table style="width: 680px;" border="0" cellpadding="0" cellspacing="0" class="fieldset" >
+                                    <tr>
+                                        <td align="Left" style="width: 300px">
+                                            <span style="color: #ff0000">&nbsp;&nbsp;</span> <strong>Agency #:</strong>
+                                        </td>
+                                        <td align="Left">
+                                            <asp:Label ID="lblAgency" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td align="Left" style="width: 300px">
+                                            <span style="color: #ff0000">&nbsp;&nbsp;</span><strong> Agency Name:</strong>
+                                            </td>
+                                        <td align="Left" >
+                                            <asp:Label ID="lblAgencyName" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
+                                            </td>
+                                    </tr>
+                                    <tr id="trAgentStatus" runat="server" >
+                                        <td align="Left" style="width: 300px">
+                                            <span style="color: #ff0000">&nbsp;&nbsp;</span><strong> Agency Status:</strong>
+                                            </td>
+                                        <td align="Left">
+                                            <asp:Label ID="lblAgentStatus" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
+                                            </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="Left" style="width: 300px">
+                                            <span style="color: #ff0000">*</span> Contact:</td>
+                                        <td align="Left">
+                                            <asp:TextBox ID="txtContact" runat="server" MaxLength="100" Width="244px" /></td>
+                                    </tr>
+                                     <tr>
+                                        <td align="Left" style="width: 300px; height: 22px"><span style=" color :#ff0000">*</span> Phone:<font size="2" name="arial">(NNN-NNN-NNNN)</font></td>
+                                         <td align="Left" style="height: 24px" >
+                                           <asp:TextBox ID="txtPhone" runat="server" MaxLength="12" class="text input_mask mask_phone"></asp:TextBox>
+                                             <asp:RequiredFieldValidator ID="rfvtxtphone" runat="server" ControlToValidate="txtPhone"
+                                                ErrorMessage="Please Enter Phone">*</asp:RequiredFieldValidator>
+                                                <cc1:MaskedEditExtender ID="MaskedEditExtender1" runat="server" TargetControlID="txtPhone" Mask="999-999-9999" ClearMaskOnLostFocus="false">
+                                            </cc1:MaskedEditExtender>
+                                             <cc1:MaskedEditValidator ID="MaskedEditValidator1" runat="server" ControlExtender="MaskedEditExtender1" ControlToValidate="txtPhone"></cc1:MaskedEditValidator></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" style="width: 300px"><span style="color: #ff0000">&nbsp;&nbsp;</span>
+                                        How do you want your quote replied ?
+                                        </td>
+                                        <td align="left">
+                                            <asp:DropDownList ID="ddlReplyOptions" runat="server" Width="74px" AutoPostBack="True">
+                                            <asp:ListItem>Email</asp:ListItem>
+                                            <asp:ListItem>Fax</asp:ListItem>
+                                        </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                   <tr>
+                                        <td align="Left" style="width: 300px">
+                                            &nbsp;&nbsp; Email/Fax:</td>
+                                        <td align="Left"><asp:TextBox ID="txtFaxNo" runat="server" CssClass="text" Width="244px"></asp:TextBox>
+                                            <asp:RegularExpressionValidator ID="regxvEmailOption" runat="server" ControlToValidate="txtFaxNo"
+                                                ErrorMessage="Invalid EmailId" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator>
+                                                 <asp:RegularExpressionValidator
+                                                ID="regxvFaxOption" runat="server" ControlToValidate="txtFaxNo"
+                                                ErrorMessage="Invalid Fax Number" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" Enabled="False" Width="1px">*</asp:RegularExpressionValidator></td>
+                                   </tr>                                </table>
+                            </fieldset>
+				
+                       
+            
+													
+					

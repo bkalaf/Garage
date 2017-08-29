@@ -1,0 +1,10 @@
+C:\temp\ferris\GarageQuoteSheetWeb\GarageQuoteSheetWeb\GarageQuoteSheetDLL\bin\Debug\GarageQuoteSheetDLL.dll
+C:\temp\ferris\GarageQuoteSheetWeb\GarageQuoteSheetWeb\GarageQuoteSheetDLL\bin\Debug\GarageQuoteSheetDLL.pdb
+C:\temp\ferris\GarageQuoteSheetWeb\GarageQuoteSheetWeb\GarageQuoteSheetDLL\bin\Debug\GarageQuoteSheetDLL.xml
+C:\temp\ferris\GarageQuoteSheetWeb\GarageQuoteSheetWeb\GarageQuoteSheetDLL\bin\Debug\log4net.dll
+C:\temp\ferris\GarageQuoteSheetWeb\GarageQuoteSheetWeb\GarageQuoteSheetDLL\bin\Debug\XmlUtils.dll
+C:\temp\ferris\GarageQuoteSheetWeb\GarageQuoteSheetWeb\GarageQuoteSheetDLL\obj\Debug\Resources.resources
+C:\temp\ferris\GarageQuoteSheetWeb\GarageQuoteSheetWeb\GarageQuoteSheetDLL\obj\Debug\GarageQuoteSheetDLL.vbproj.GenerateResource.Cache
+C:\temp\ferris\GarageQuoteSheetWeb\GarageQuoteSheetWeb\GarageQuoteSheetDLL\obj\Debug\GarageQuoteSheetDLL.dll
+C:\temp\ferris\GarageQuoteSheetWeb\GarageQuoteSheetWeb\GarageQuoteSheetDLL\obj\Debug\GarageQuoteSheetDLL.xml
+C:\temp\ferris\GarageQuoteSheetWeb\GarageQuoteSheetWeb\GarageQuoteSheetDLL\obj\Debug\GarageQuoteSheetDLL.pdb

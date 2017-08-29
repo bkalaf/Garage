@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://siu-alp-devweb-001:90/HO3Service/StateTaxesAndFees.asmx?wsdl" docRef="http://siu-alp-devweb-001:90/HO3Service/StateTaxesAndFees.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://siu-alp-devweb-001:90/HO3Service/StateTaxesAndFees.asmx" xmlns:q1="http://tempuri.org/" binding="q1:StateTaxesAndFeesSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://siu-alp-devweb-001:90/HO3Service/StateTaxesAndFees.asmx" xmlns:q2="http://tempuri.org/" binding="q2:StateTaxesAndFeesSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

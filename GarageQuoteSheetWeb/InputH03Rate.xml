@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<FactBase>
+  <NumericFact id="dwelling">150000</NumericFact>
+  <NumericFact id="persProp">100000</NumericFact>
+  <NumericFact id="liability">500000</NumericFact>
+  <NumericFact id="deductible"> 1000</NumericFact>
+  <LiteralFact id="windHailExclusion">No</LiteralFact>
+  <NumericFact id="windDeductible">0.05</NumericFact>
+  <LiteralFact id="sinkholeExcluded">No</LiteralFact>
+  <LiteralFact id="alarmCredit">Monitored Central Station</LiteralFact>
+  <LiteralFact id="lawLimitCoverageA">Yes</LiteralFact>
+  <LiteralFact id="county">CALHOUN</LiteralFact>
+  <LiteralFact id="construction">Frame</LiteralFact>
+  <LiteralFact id="yearBuilt">1977</LiteralFact>
+  <NumericFact id="protectionClass">7</NumericFact>
+  <LiteralFact id="pool">No</LiteralFact>
+  <LiteralFact id="trampoline">Yes</LiteralFact>
+  <LiteralFact id="pets">No</LiteralFact>
+  <NumericFact id="miToTidalWater">7</NumericFact>
+  <LiteralFact id="roofAge">7</LiteralFact>
+  <LiteralFact id="windProtectiveDevices">Impact Resistant Glass</LiteralFact>
+  <NumericFact id="windLossesLast3">0</NumericFact>
+  <NumericFact id="nonWindLossesLast3">0</NumericFact>
+</FactBase>
