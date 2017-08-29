@@ -971,6 +971,11 @@
                                             <tr>
                                                 <td style="width: 211px" align="left">
                                                     <span style="color: #ff0000">*</span>Do you own a Wrecker:<br />
+                                                    <asp:CustomValidator ID="CustomValidator1" runat="server" 
+                                                        ClientValidationFunction="Custom_rdoHasWrecker" 
+                                                        ControlToValidate="txtMplOtherLocations" CssClass="validator" 
+                                                        ErrorMessage="CustomValidator"></asp:CustomValidator>
+                                                    <br />
                                                 </td>
                                                 <td align="center" style="width: 73px">
                                                     <asp:RadioButton ID="rdOwnWreckerYes" runat="server" GroupName="OwnWrecker" Style="width: 18px" />
@@ -986,6 +991,10 @@
                                                 <td style="width: 211px" align="left">
                                                     <span style="color: #ff0000">*<span style="color: #000000"> Do you own a </span><span
                                                         style="color: #000000">Rollback:</span></span>
+                                                    <br />
+                                                    <asp:CustomValidator ID="CustomValidator2" runat="server" 
+                                                        ControlToValidate="txtMplOtherLocations" CssClass="validator" 
+                                                        ErrorMessage="CustomValidator"></asp:CustomValidator>
                                                     <br />
                                                 </td>
                                                 <td align="center" style="width: 73px">
@@ -1004,6 +1013,14 @@
                                                     <span style="color: #ff0000">*<span style="color: #000000">Do you own or use Tow Bar<br />
                                                         &nbsp; or Tow Dollie or Trailer:</span></span><br />
                                                     &nbsp;&nbsp;<span style="color: #ff0000; font-size: small">(If Yes, Please explain)</span>
+                                                    <br />
+                                                    <asp:Label ID="lblOwnTowBarCrumb" runat="server" CssClass="crumb" 
+                                                        Text="Please explain"></asp:Label>
+                                                    <br />
+                                                    <asp:CustomValidator ID="customOwnTowBar" runat="server" 
+                                                        ClientValidationFunction="Custom_rdoOwnTowBar" 
+                                                        ControlToValidate="txtMplOtherBusiness" CssClass="validator" 
+                                                        ErrorMessage="CustomValidator"></asp:CustomValidator>
                                                     <br />
                                                 </td>
                                                 <td align="center" style="width: 73px; height: 40px;">
@@ -1030,10 +1047,7 @@
                                 </tr>
                                 <tr>
                                     <td align="right" style="width: 5297px">
-                                        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="Driver">
-                                        </asp:Repeater>
-                                        <asp:ObjectDataSource ID="Driver" runat="server"></asp:ObjectDataSource>
-                                    </td>
+                                        &nbsp;</td>
                                     <td align="left" style="width: 360px">
                                         &nbsp;</td>
                                 </tr>

@@ -25,6 +25,14 @@ Partial Class CreateQuote
     Dim toyear1, toyear2, toyear3 As String
     Dim frmdate1, todate1, frmdate2, frmdate3, todate2, todate3 As DateTime
 
+    Protected Function Custom_base2(yesButton As RadioButton, noButton As RadioButton) As Boolean
+        If yesButton.Checked Or noButton.Checked Then
+            Custom_base2 = True
+        Else
+            Custom_base2 = False
+        End If
+    End Function
+
     Protected Function Custom_base(yesButton As RadioButton, noButton As RadioButton, textBox As TextBox) As Boolean
         If yesButton.Checked Then
             Custom_base = True
@@ -41,6 +49,17 @@ Partial Class CreateQuote
     Protected Sub Custom_rdoAutoParts(sender As Object, e As ServerValidateEventArgs)
         e.IsValid = Custom_base(rdAutoPartsYes, rdAutoPartsNo, txtSellPercentage)
     End Sub
+    Protected Sub Custom_rdoHasWrecker(sender As Object, e As ServerValidateEventArgs)
+        e.IsValid = Custom_base2(rdOwnWreckerYes, rdOwnWreckerNo)
+    End Sub
+    Protected Sub Custom_rdoHasRollback(sender As Object, e As ServerValidateEventArgs)
+        e.IsValid = Custom_base2(rdOwnRollbackYes, rdOwnRollbackNo)
+    End Sub
+    Protected Sub Custom_rdoOwnTowBar(sender As Object, e As ServerValidateEventArgs)
+        e.IsValid = Custom_base(rdTowBarDollieTrailerYes, rdTowBarDollieTrailerNo, txtMplDollie)
+    End Sub
+
+    Public Property DriverSet As DataSet = New DataSet()
     ''' <summary>
     ''' Load event for first time, will fill up the Agent information and Garage Lookups
     ''' </summary>
