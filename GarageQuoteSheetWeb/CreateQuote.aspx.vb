@@ -372,6 +372,9 @@ Partial Class CreateQuote
 
 
     End Sub
+    Private Function CreateNameAge(name As String, age As String) As String
+        Return "{" + name + "," + age + "}"
+    End Function
     ''' <summary>
     ''' after validating all inputs assigns input-values to its respective Object Classes
     ''' these object classes are passed for Data entry, when values are assigned.
@@ -381,6 +384,33 @@ Partial Class CreateQuote
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnSubmit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSubmit.Click
+        Me.txtMplDriversNameAge.Text = CreateNameAge(inputOwnerName.Text, inputOwnerAge.Text)
+        Me.txtMplOwnerSpouseNameAge.Text = CreateNameAge(inputSpouseName.Text, inputSpouseAge.Text)
+
+        Dim sb As StringBuilder = New StringBuilder()
+        For index = 1 To CInt(Me.tbDriverCount.Text)
+            Dim nameTb As TextBox = Me.FindControl("inputDriverName" + CStr(index))
+            Dim ageTb As TextBox = Me.FindControl("inputDriverAge" + CStr(index))
+            sb.Append(CreateNameAge(nameTb.Text, ageTb.Text))
+        Next
+        Me.txtMplDriversNameAge.Text = sb.ToString()
+
+        Dim sb2 As StringBuilder = New StringBuilder()
+        For index = 1 To CInt(Me.tbDriverCount.Text)
+            Dim nameTb As TextBox = Me.FindControl("inputEmployeeName" + CStr(index))
+            Dim ageTb As TextBox = Me.FindControl("inputEmployeeAge" + CStr(index))
+            sb2.Append(CreateNameAge(nameTb.Text, ageTb.Text))
+        Next
+        Me.txtMplEmployeeNameAge.Text = sb2.ToString()
+
+        Dim sb3 As StringBuilder = New StringBuilder()
+        For index = 1 To CInt(Me.tbDriverCount.Text)
+            Dim nameTb As TextBox = Me.FindControl("inputDriverName" + CStr(index))
+            Dim ageTb As TextBox = Me.FindControl("inputDriverAge" + CStr(index))
+            sb3.Append(CreateNameAge(nameTb.Text, ageTb.Text))
+        Next
+        Me.txtMplPersonFurnishedAutoName.Text = sb3.ToString()
+
         logger.Debug("Entering CreateQuote.btnSubmit_Click")
         If Not chkValidations() Then
             Exit Sub
@@ -3219,4 +3249,6 @@ Partial Class CreateQuote
     '        End If
     '    End If
     'End Sub
+
+
 End Class

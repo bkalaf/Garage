@@ -30,15 +30,7 @@
             $(label).hide();
         };
 
-        $(document).ready(function () {
-            linkRadioTextAndLabel(
-                "#<%= rdoGarageOperationOtherLocationYes.ClientID %>",
-                "#<%= rdoGarageOperationOtherLocationNo.ClientID %>",
-                "#<%= txtMplOtherLocations.ClientID %>",
-                "#<%= lblGarageOperationOtherLocationCrumb.ClientID %>");
-            $("#rdOwnRollbackYes").click(function () { $("#tbRollBack").Text = "True"; });
-            $("#tbRollBack").Text = "False";
-        });
+        
         function addLoadEvent(func) {
             var oldonload = window.onload;
             if (typeof window.onload != 'function') {
@@ -52,6 +44,9 @@
                 }
             }
         }
+
+                                  
+                                
         addLoadEvent(function () {
             Xaprb.InputMask.setupElementMasks();
         });
@@ -111,8 +106,97 @@
             var str = lstr.value;
             lstr.value = str.toUpperCase();
         }
-    
 
+        /*
+        
+        <td style="width: 500px" align="left">
+        &nbsp;</td>
+        <td style="width: 500px" align="left">
+        <input name="TextBox6" id="TextBox6" style="width:300px;" type="text">
+        </td>
+        <td style="width: 360px">
+        <input name="TextBox17" id="TextBox17" style="width:65px;" type="text">
+        </td>
+        */
+        function addDriver() {           
+            var current = parseInt(document.getElementById("tbDriverCount").value);
+            var next = current + 1;
+            var last = $("#endRowDriver");
+            var nextName = "inputDriverName" + next;
+            var nextAge = "inputDriverAge" + next;
+            var html = "<tr><td style=\"width: 500px\" align=\"left\">\n&nbsp;</td>\n<td style=\"width: 500px\" align=\"left\">" +
+                       "<input name=\"" + nextName + "\" id=\"" + nextName + "\" style=\"width:300px;\" type=\"text\"></td><td style=\"width: 360px\">" +
+                       "<input name=\"" + nextAge + "\" id=\"" + nextAge + "\" style=\"width:65px;\" type=\"text\"></tr>";
+            $(html).insertBefore(last);
+
+            var currentName = document.getElementById("inputDriverName3").value;
+            var currentAge = document.getElementById("inputDriverAge3").value;
+            document.getElementById(nextName).value = currentName;
+            document.getElementById(nextAge).value = currentAge;
+            document.getElementById("inputDriverAge3").value = "";
+            document.getElementById("inputDriverName3").value = "";
+            document.getElementById("tbDriverCount").value = next;
+        }
+        function addEmployee() {
+            var current = parseInt(document.getElementById("tbEmployeeCount").value);
+            var next = current + 1;
+            var last = $("#endRowEmployee");
+            var nextName = "inputEmployeeName" + next;
+            var nextAge = "inputEmployeeAge" + next;
+            var html = "<tr><td style=\"width: 500px\" align=\"left\">\n&nbsp;</td>\n<td style=\"width: 500px\" align=\"left\">" +
+                       "<input name=\"" + nextName + "\" id=\"" + nextName + "\" style=\"width:300px;\" type=\"text\"></td><td style=\"width: 360px\">" +
+                       "<input name=\"" + nextAge + "\" id=\"" + nextAge + "\" style=\"width:65px;\" type=\"text\"></tr>";
+            $(html).insertBefore(last);
+
+            var currentName = document.getElementById("inputEmployeeName3").value;
+            var currentAge = document.getElementById("inputEmployeeAge3").value;
+            document.getElementById(nextName).value = currentName;
+            document.getElementById(nextAge).value = currentAge;
+            document.getElementById("inputEmployeeAge3").value = "";
+            document.getElementById("inputEmployeeName3").value = "";
+            document.getElementById("tbEmployeeCount").value = next;
+        }
+        function addFurnishedPerson() {
+            var current = parseInt(document.getElementById("tbPersonFurnishedCount").value);
+            var next = current + 1;
+            var last = $("#endRowPersonFurnished");
+            var nextName = "inputPersonFurnishedName" + next;
+            var nextAge = "inputPersonFurnishedAge" + next;
+            var html = "<tr><td style=\"width: 500px\" align=\"left\">\n&nbsp;</td>\n<td style=\"width: 500px\" align=\"left\">" +
+                       "<input name=\"" + nextName + "\" id=\"" + nextName + "\" style=\"width:300px;\" type=\"text\"></td><td style=\"width: 360px\">" +
+                       "<input name=\"" + nextAge + "\" id=\"" + nextAge + "\" style=\"width:65px;\" type=\"text\"></tr>";
+            $(html).insertBefore(last);
+
+            var currentName = document.getElementById("inputPersonFurnishedName3").value;
+            var currentAge = document.getElementById("inputPersonFurnishedAge3").value;
+            document.getElementById(nextName).value = currentName;
+            document.getElementById(nextAge).value = currentAge;
+            document.getElementById("inputPersonFurnishedAge3").value = "";
+            document.getElementById("inputPersonFurnishedName3").value = "";
+            document.getElementById("tbPersonFurnishedCount").value = next;
+        }
+
+        $(document).ready(function () {
+            linkRadioTextAndLabel(
+                "#<%= rdoGarageOperationOtherLocationYes.ClientID %>",
+                "#<%= rdoGarageOperationOtherLocationNo.ClientID %>",
+                "#<%= txtMplOtherLocations.ClientID %>",
+                "#<%= lblGarageOperationOtherLocationCrumb.ClientID %>");
+            $("#rdOwnRollbackYes").click(function () { $("#tbRollBack").Text = "True"; });
+            $("#tbRollBack").Text = "False";
+            $("#txtMplOwnerSpouseNameAge").hide();
+            $("#txtMplDriversNameAge").hide();
+            $("#txtMplEmployeeNameAge").hide();
+            $("#txtMplPersonFurnishedAutoName").hide();
+            $("#tbDriverCount").hide();
+            $("#tbEmployeeCount").hide();
+            $("#tbFurnishedPersonCount").hide();
+            $("#btnInputAddDriver").click(addDriver);
+            $("#btnInputAddEmployee").click(addEmployee);
+            $("#btnInputAddPersonFurnished").click(addFurnishedPerson);
+
+            
+        });
     </script>
     <style type="text/css" media="screen">
         body
@@ -400,6 +484,18 @@
             color: #FF0000;
             width: 250px;
            
+        }
+        #Button1
+        {
+            width: 154px;
+        }
+        .style1
+        {
+            width: 505px;
+        }
+        .style2
+        {
+            width: 408px;
         }
     </style>
     <script language="javascript" type="text/javascript">
@@ -690,7 +786,7 @@
                             <table style="width: 680px; height: 240px" border="0" cellpadding="0" cellspacing="0"
                                 class="fieldset">
                                 <tr>
-                                    <td style="width: 206px; height: 14px;" align="Left">
+                                    <td style="height: 14px;" align="Left" colspan="2">
                                         <span style="color: #ff0000">*</span> Applicant Name
                                     </td>
                                     <td style="width: 100px; height: 14px;" align="Left">
@@ -703,7 +799,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 206px; height: 14px;" align="Left">
+                                    <td style="height: 14px;" align="Left" colspan="2">
                                         <span style="color: #ff0000"></span>&nbsp;&nbsp;Trade Name
                                     </td>
                                     <td style="width: 100px; height: 14px; text-align: left;">
@@ -711,7 +807,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 206px" align="Left">
+                                    <td align="Left" colspan="2">
                                         <span style="color: #ff0000">*</span> Garaging Address:
                                     </td>
                                     <td style="width: 100px" align="Left">
@@ -723,7 +819,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 206px" align="Left">
+                                    <td align="Left" colspan="2">
                                         <span style="color: #ff0000">*</span> City:
                                     </td>
                                     <td style="width: 100px" align="Left">
@@ -735,7 +831,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 206px" align="Left">
+                                    <td align="Left" colspan="2">
                                         <span style="color: #ff0000">*</span> County:
                                     </td>
                                     <td style="width: 100px" align="Left">
@@ -747,7 +843,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 206px; height: 10px;" align="Left">
+                                    <td style="height: 10px;" align="Left" colspan="2">
                                         <span style="color: #ff0000">*</span> State
                                     </td>
                                     <td align="Left">
@@ -764,7 +860,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 206px; height: 10px;" align="Left">
+                                    <td style="height: 10px;" align="Left" colspan="2">
                                         <span style="color: #ff0000">*</span> ZIP Code
                                     </td>
                                     <td style="width: 100px; height: 10px;" align="Left">
@@ -782,7 +878,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">
+                                    <td colspan="3">
                                         <table width="100%">
                                             <tr>
                                                 <td align="left" style="width: 46%">
@@ -817,7 +913,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 5297px; height: 49px" align="left">
+                                    <td style="height: 49px" align="left" colspan="2">
                                         <span style="color: #ff0000">*</span> Years in Business
                                     </td>
                                     <td style="width: 360px; height: 49px" align="left">
@@ -843,7 +939,7 @@
                                     </td>
                                 </tr>
                                 <tr id="trYrsExp" runat="server" visible="false">
-                                    <td style="width: 5297px; height: 27px" align="left">
+                                    <td style="height: 27px" align="left" colspan="2">
                                         <span style="color: #ff0000">*</span> Years of experience
                                     </td>
                                     <td style="width: 360px; height: 27px" align="left">
@@ -855,7 +951,7 @@
                                     </td>
                                 </tr>
                                 <tr id="tryearinsured" runat="server">
-                                    <td style="width: 5297px; height: 27px" align="left">
+                                    <td style="height: 27px" align="left" colspan="2">
                                         <span style="color: #ff0000">*</span> Years Insured:
                                     </td>
                                     <td style="width: 360px; height: 27px" align="left">
@@ -867,7 +963,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 5297px; height: 27px" align="left">
+                                    <td style="height: 27px" align="left" colspan="2">
                                         <span style="color: #ff0000">*</span> Operations of Insured:
                                     </td>
                                     <td style="width: 360px; height: 27px" align="left">
@@ -880,21 +976,21 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 5297px; height: 27px" align="left">
+                                    <td style="height: 27px" align="left" colspan="2">
                                         &nbsp; Retail Dealership&nbsp;</td>
                                     <td style="width: 360px; height: 27px" align="left">
                                         <asp:CheckBox ID="cbRetailDealership" runat="server" />
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 5297px; height: 27px" align="left">
+                                    <td style="height: 27px" align="left" colspan="2">
                                         &nbsp; Wholesale Dealership&nbsp;</td>
                                     <td style="width: 360px; height: 27px" align="left">
                                         <asp:CheckBox ID="cbWholesaleDealership" runat="server" />
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" width="100%">
+                                    <td colspan="3" width="100%">
                                         <table width="100%">
                                             <tr>
                                                 <td style="width: 211px" align="left">
@@ -1080,26 +1176,26 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="right" style="width: 5297px">
+                                    <td align="right" colspan="2">
                                     </td>
                                     <td align="left" style="width: 360px">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="right" style="width: 5297px">
+                                    <td align="right" colspan="2">
                                         &nbsp;</td>
                                     <td align="left" style="width: 360px">
                                         &nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" style="height: 20px" align="center">
+                                    <td colspan="3" style="height: 20px" align="center">
                                         <strong display="none"><span style="color: #ff0000">*</span> Owners / Spouses / Driver / Employees
                                             / Person furnished Autos</strong>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 5297px" align="left">
-                                        <span style="color: #ff0000">*</span> Owner &amp; Spouse Name(s) &amp;&nbsp; Age:<br />
+                                    <td align="left" colspan="2">
+                                        
                                     </td>
                                     <td style="width: 360px">
                                         <asp:TextBox runat="server" TextMode="multiline" ID="txtMplOwnerSpouseNameAge" Height="60px"
@@ -1107,8 +1203,9 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 5297px" align="left">
-                                        Drivers Name(s) &amp; Age:
+                                    <td align="left" colspan="2">
+                                        
+                                        <asp:TextBox ID="tbDriverCount" runat="server">3</asp:TextBox>
                                     </td>
                                     <td style="width: 360px">
                                         <asp:TextBox runat="server" TextMode="multiline" ID="txtMplDriversNameAge" Height="60px"
@@ -1116,8 +1213,9 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 5297px" align="left">
-                                        Employee Name(s) &amp; Age:<font face="Arial"></font>
+                                    <td align="left" colspan="2">
+                                        
+                                        <asp:TextBox ID="tbEmployeeCount" runat="server">3</asp:TextBox>
                                     </td>
                                     <td style="width: 360px">
                                         <asp:TextBox runat="server" TextMode="multiline" ID="txtMplEmployeeNameAge" Height="60px"
@@ -1125,8 +1223,9 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 5297px" align="left">
-                                        Persons Furnished Autos:
+                                    <td align="left" colspan="2">
+                                        
+                                        <asp:TextBox ID="tbPersonFurnishedCount" runat="server">3</asp:TextBox>
                                     </td>
                                     <td style="width: 360px">
                                         <asp:TextBox runat="server" TextMode="multiline" ID="txtMplPersonFurnishedAutoName"
@@ -1134,8 +1233,171 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        Name</td>
+                                    <td style="width: 160px">
+                                        Age</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        Owner</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="inputOwnerName" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="inputOwnerAge" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        Spouse</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="inputSpouseName" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="inputSpouseAge" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        Driver</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="inputDriverName1" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="inputDriverAge1" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="inputDriverName2" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="inputDriverAge2" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr id="endRowDriver">
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="inputDriverName3" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="inputDriverAge3" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td style="width: 660px" colspan=2 align="left">
+                                        <input id="btnInputAddDriver" type="button" value="Add Additional Driver" /></td>
+                                    
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        Employee</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="inputEmployeeName1" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="inputEmployeeAge1" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="inputEmployeeName2" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="inputEmployeeAge2" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr id="endRowEmployee">
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="inputEmployeeName3" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="inputEmployeeAge3" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td style="width: 660px" colspan=2 align="left">
+                                        <input id="btnInputAddEmployee" type="button" value="Add Additional Employee" /></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        Person Furnished</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="inputPersonFurnishedName1" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="inputPersonFurnishedAge1" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="inputPersonFurnishedName2" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="inputPersonFurnishedAge2" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr id="endRowPersonFurnished">
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="inputPersonFurnishedName3" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="inputPersonFurnishedAge3" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td style="width: 660px" colspan=2 align="left">
+                                        <input id="btnInputAddFurnishedPerson" type="button" 
+                                            value="Add Additional Person Furnished" /></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
                                         <table>
+                                            <tr>
+                                                <td style="width: 333px" align="left">
+                                                    &nbsp;</td>
+                                                <td align="left" style="width: 127px">
+                                                    &nbsp;</td>
+                                                <td style="width: 109px" align="left">
+                                                    &nbsp;</td>
+                                                <td align="left" style="width: 100px">
+                                                    &nbsp;</td>
+                                            </tr>
                                             <tr>
                                                 <td style="width: 333px" align="left">
                                                     <span style="color: #ff0000">*</span> Any children in household:
@@ -1156,7 +1418,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 5297px" align="left">
+                                    <td align="left" colspan="2">
                                         &nbsp;If Yes, need all ages:
                                     </td>
                                     <td style="width: 360px">
@@ -1164,7 +1426,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 5297px" align="left">
+                                    <td align="left" colspan="2">
                                         <strong>Comments:</strong>
                                     </td>
                                     <td style="width: 360px">
