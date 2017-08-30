@@ -26,7 +26,9 @@ Partial Class CreateQuote
     Dim frmdate1, todate1, frmdate2, frmdate3, todate2, todate3 As DateTime
 
     Protected Function Custom_base2(yesButton As RadioButton, noButton As RadioButton) As Boolean
-        If yesButton.Checked Or noButton.Checked Then
+        If yesButton.Checked Then
+            Custom_base2 = True
+        ElseIf noButton.Checked Then
             Custom_base2 = True
         Else
             Custom_base2 = False
@@ -58,7 +60,12 @@ Partial Class CreateQuote
     Protected Sub Custom_rdoOwnTowBar(sender As Object, e As ServerValidateEventArgs)
         e.IsValid = Custom_base(rdTowBarDollieTrailerYes, rdTowBarDollieTrailerNo, txtMplDollie)
     End Sub
-
+    Protected Sub Custom_rdoOperateSalvage(sender As Object, e As ServerValidateEventArgs)
+        e.IsValid = Custom_base2(rdoOperateSalvageYardYes, rdoOperateSalvageYardNo)
+    End Sub
+    Protected Sub Custom_rdoOtherBusiness(sender As Object, e As ServerValidateEventArgs)
+        e.IsValid = Custom_base(rdOtherBusinessOperationYes, rdOtherBusinessOperationNo, txtMplOtherBusiness)
+    End Sub
     Public Property DriverSet As DataSet = New DataSet()
     ''' <summary>
     ''' Load event for first time, will fill up the Agent information and Garage Lookups

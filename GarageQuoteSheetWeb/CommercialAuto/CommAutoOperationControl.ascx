@@ -1,6 +1,7 @@
 <%@ Control Language="VB" AutoEventWireup="false" CodeFile="CommAutoOperationControl.ascx.vb"
     Inherits="UserControl947.CommAutoOperationControl" %>
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 <script language="JavaScript" type="text/javascript">
               
          function Click(obj,ctrl)
@@ -64,7 +65,13 @@ function up(lstr)
 	var str=lstr.value;
 	lstr.value=str.toUpperCase();
 }
-		
+
+$("document").ready(function () {
+    $("#radioDOT").click(function () { $("#tbFilingNumber").show(); });
+    $("#radioMC").click(function () { $("#tbFilingNumber").show(); });
+    $("#radioUnknown").click(function () { $("#tbFilingNumber").hide(); });
+    $("#tbFilingNumber").hide();
+});
 </script>
 
 <asp:UpdatePanel ID="updatepanel1" runat="server">
@@ -153,7 +160,7 @@ function up(lstr)
                     <td align="left" style="width: 400px">
                         <span style="color: #ff0000">*</span> Type of Business
                     </td>
-                    <td colspan="2">
+                    <td>
                         <table style="border: solid 2px #999999" width="100%">
                             <tr>
                                 <td align="right">
@@ -271,6 +278,24 @@ function up(lstr)
                                 </td>
                             </tr>
                             <tr>
+                                <td style="width: 360px" align="left">
+                                    <asp:RadioButton ID="radioDOT" runat="server" GroupName="FilingNumber" 
+                                        Text="DOT #" />
+                                </td>
+                                <td align="center" style="width: 73px; height: 38px;">
+                                    <asp:RadioButton ID="radioMC" runat="server" GroupName="FilingNumber" 
+                                        Text="MC#" />
+                                </td>
+                                <td align="center" style="width: 74px; height: 38px;">
+                                    <asp:RadioButton ID="radioUnknown" runat="server" GroupName="FilingNumber" 
+                                        Text="Unknown" Width="93px" />
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="tbFilingNumber" runat="server" Width="128px"></asp:TextBox>
+                                    <asp:Label ID="Label1" runat="server" Text="  Enter DOT/MC#"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td style="width: 211px" align="left">
                                     <span style="color: #ff0000">*</span>Are all owned and operated<br>
                                     &nbsp;&nbsp; vehicles listed:
@@ -331,6 +356,7 @@ function up(lstr)
     </ContentTemplate>
     <Triggers>
         <asp:PostBackTrigger ControlID="txtState" />
+<asp:PostBackTrigger ControlID="ddlYearsInBusiness"></asp:PostBackTrigger>
     </Triggers>
     <Triggers>
         <asp:PostBackTrigger ControlID="ddlYearsInBusiness" />

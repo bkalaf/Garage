@@ -50,9 +50,38 @@ event.keyCode=0;
 
 }
 
-} 
+}
 
-</script>
+function processDD(dropDown) {
+    var name = "Coverage_" + dropDown;
+    var selector = $("#" + name);
+    selector.empty();
+    var option0 = "<option value='0'>Select One</option>";
+    var option1 = "<option value='-1'>500</option>";
+    var option2 = "<option value='2'>1000</option>";
+    var option3 = "<option value='3'>2500</option>";
+    var option4 = "<option value='4'>5000</option>";
+
+    selector.append(option0, option1, option2, option3, option4);
+    selector.mouseleave(function () {
+        if (document.getElementById(name).value == -1) {
+            document.getElementById(name).value = 0;
+        }
+    });
+}
+$("document").ready(function () {
+    $("#<%= tbCoverageOther.ClientID %>").hide();
+    $("#<%= lblCoverageOther.ClientID %>").hide();
+    $("#<%= ddlCoverage.ClientID %>").mouseleave(function () {
+        var selector = $("#<%= ddlCoverage.ClientID %>");
+        if (selector.value == 4) {
+            $("#<%= tbCoverageOther.ClientID %>").show();
+            $("#<%= lblCoverageOther.ClientID %>").show();
+        }
+    });
+    processDD("ddldedutible");
+});
+ </script>
 <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                                                 <ContentTemplate>	
 
@@ -260,6 +289,23 @@ event.keyCode=0;
                                             <span style="color: #ff0000">&nbsp;&nbsp;</span> Motor Truck cargo/On-Hook:</td>
                                         <td>
                                             <asp:TextBox ID="txtmotortrukcargo" runat="server" Height="60px" TextMode="MultiLine" Width="300px" MaxLength="100" TabIndex="138"></asp:TextBox></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span style="color: #ff0000">&nbsp;&nbsp;</span> Coverage:</td>
+                                        </td>
+                                        <td>
+                                            <asp:DropDownList runat="server" ID="ddlCoverage" Width="130px">
+                                                <asp:ListItem Text="Select One" Value="0"></asp:ListItem>
+                                                <asp:ListItem Text="30,000" Value="1"></asp:ListItem>
+                                                <asp:ListItem Text="50,000" Value="2"></asp:ListItem>
+                                                <asp:ListItem Text="100,000" Value="3"></asp:ListItem>
+                                                <asp:ListItem Text="Other" Value="4"></asp:ListItem>
+                                            </asp:DropDownList>
+                                            <br />
+                                            <asp:TextBox runat="server" ID="tbCoverageOther"></asp:TextBox>
+                                            <asp:Label runat="server" ID="lblCoverageOther" Text="Please specify" ForeColor="Red"></asp:Label>
+                                        </td>
                                     </tr>
                                     <tr id="deductible" runat="server">
                                         <td  align="Left" style="width:390px">

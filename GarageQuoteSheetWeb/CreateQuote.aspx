@@ -35,7 +35,9 @@
                 "#<%= rdoGarageOperationOtherLocationYes.ClientID %>",
                 "#<%= rdoGarageOperationOtherLocationNo.ClientID %>",
                 "#<%= txtMplOtherLocations.ClientID %>",
-                "#<%= lblGarageOperationOtherLocationCrumb.ClientID %>")                    
+                "#<%= lblGarageOperationOtherLocationCrumb.ClientID %>");
+            $("#rdOwnRollbackYes").click(function () { $("#tbRollBack").Text = "True"; });
+            $("#tbRollBack").Text = "False";
         });
         function addLoadEvent(func) {
             var oldonload = window.onload;
@@ -395,7 +397,9 @@
             font-style: normal;
             font-variant: normal;
             text-transform: capitalize;
-            color: #FF0000;            
+            color: #FF0000;
+            width: 250px;
+           
         }
     </style>
     <script language="javascript" type="text/javascript">
@@ -694,7 +698,8 @@
                                             Width="244px" />
                                         <br />
                                         <asp:RequiredFieldValidator ID="rfvApplicantName" runat="server" ControlToValidate="txtApplicantName"
-                                            ErrorMessage="RequiredFieldValidator" CssClass="validator"></asp:RequiredFieldValidator>
+                                            ErrorMessage="This field is required." Width="250 px" CssClass="validator" 
+                                            Display="Dynamic"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -713,8 +718,8 @@
                                         <asp:TextBox ID="txtgaragingadd" runat="server" MaxLength="50" Width="244px" />
                                         <br />
                                         <asp:RequiredFieldValidator ID="rfvGaragingAddress" runat="server" 
-                                            ErrorMessage="RequiredFieldValidator" ControlToValidate="txtgaragingadd" 
-                                            CssClass="validator"></asp:RequiredFieldValidator>
+                                            ErrorMessage="This field is required." Width="250 px" ControlToValidate="txtgaragingadd" 
+                                            CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -725,7 +730,8 @@
                                         <asp:TextBox ID="txtcity" runat="server" MaxLength="50" Width="244px" />
                                         <br />
                                         <asp:RequiredFieldValidator ID="rfvCity" runat="server" ControlToValidate="txtCity"
-                                            ErrorMessage="RequiredFieldValidator" CssClass="validator"></asp:RequiredFieldValidator>
+                                            ErrorMessage="This field is required." Width="250 px" CssClass="validator" 
+                                            Display="Dynamic"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -736,8 +742,8 @@
                                         <asp:TextBox ID="txtCounty" runat="server" MaxLength="50" Width="244px" />
                                         <br />
                                         <asp:RequiredFieldValidator ID="rfvCounty" runat="server"  
-                                            ErrorMessage="RequiredFieldValidator" ControlToValidate="txtCounty" 
-                                            CssClass="validator"></asp:RequiredFieldValidator>
+                                            ErrorMessage="This field is required." Width="250 px" ControlToValidate="txtCounty" 
+                                            CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -749,12 +755,12 @@
                                             ID="lblstateMsg" runat="server" ForeColor="Red"></asp:Label>
                                         <br />
                                         <asp:RequiredFieldValidator ID="rfvState" runat="server" 
-                                            ErrorMessage="RequiredFieldValidator" ControlToValidate="txtState" 
-                                            CssClass="validator"></asp:RequiredFieldValidator>
+                                            ErrorMessage="This field is required." Width="250 px" ControlToValidate="txtState" 
+                                            CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
                                         <br />
-                                        <asp:RegularExpressionValidator ID="regexState" runat="server" 
-                                            ErrorMessage="RegularExpressionValidator" ControlToValidate="txtState" 
-                                            CssClass="validator" ValidationExpression="[A-Z][A-Z]"></asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator ID="regexState" runat="server" Width="250 px" 
+                                            ErrorMessage="Please enter a valid 2 letter state abbreviation." ControlToValidate="txtState" 
+                                            CssClass="validator" ValidationExpression="[A-Z][A-Z]" Display="Dynamic"></asp:RegularExpressionValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -765,12 +771,14 @@
                                         <asp:TextBox ID="txtZIP" runat="server" MaxLength="5" Width="75px" />
                                         <br />
                                         <asp:RequiredFieldValidator ID="rfvZip" runat="server" 
-                                            ErrorMessage="RequiredFieldValidator" ControlToValidate="txtZIP" 
+                                            ErrorMessage="This Field is Required." Width="250 px" ControlToValidate="txtZIP" 
                                             CssClass="validator"></asp:RequiredFieldValidator>
                                         <br />
                                         <asp:RegularExpressionValidator ID="regexZipCode" runat="server" 
-                                            ErrorMessage="RegularExpressionValidator" ControlToValidate="txtZIP" 
-                                            CssClass="validator" ValidationExpression="[0-9]{5}([-][0-9]{4})?"></asp:RegularExpressionValidator>
+                                            
+                                            ErrorMessage="Please enter a valid zip code in either 5 digit (#####) or 9 digit (#####-####) format." ControlToValidate="txtZIP" 
+                                            CssClass="validator" Width="250 px" 
+                                            ValidationExpression="[0-9]{5}([-][0-9]{4})?" Display="Dynamic"></asp:RegularExpressionValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -825,8 +833,8 @@
                                                 </asp:DropDownList>
                                                 <br />
                                                 <asp:RangeValidator ID="rvYearsInBusiness" runat="server" 
-                                                    ErrorMessage="RangeValidator" ControlToValidate="ddlYearsInBusiness" 
-                                                    MinimumValue="0" MaximumValue="3" CssClass="validator"></asp:RangeValidator>
+                                                    ErrorMessage="Please enter a valid value." ControlToValidate="ddlYearsInBusiness" 
+                                                    MinimumValue="0" MaximumValue="3" CssClass="validator" Display="Dynamic"></asp:RangeValidator>
                                             </ContentTemplate>
                                             <Triggers>
                                                 <asp:PostBackTrigger ControlID="ddlYearsInBusiness" />
@@ -842,8 +850,8 @@
                                         <asp:TextBox ID="txtYrExp" runat="server" Width="27px"></asp:TextBox>
                                         <br />
                                         <asp:RequiredFieldValidator ID="rfvYrExp" runat="server" 
-                                            ErrorMessage="RequiredFieldValidator" ControlToValidate="txtYrExp" 
-                                            CssClass="validator"></asp:RequiredFieldValidator>
+                                            ErrorMessage="This field is required." Width="250 px" ControlToValidate="txtYrExp" 
+                                            CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr id="tryearinsured" runat="server">
@@ -854,8 +862,8 @@
                                         <asp:TextBox ID="txtyrsinsured" runat="server" Width="27px"></asp:TextBox>
                                         <br />
                                         <asp:RequiredFieldValidator ID="rfvYearsInsured" runat="server" 
-                                            ErrorMessage="RequiredFieldValidator" ControlToValidate="txtyrsinsured" 
-                                            CssClass="validator"></asp:RequiredFieldValidator>
+                                            ErrorMessage="This field is required." Width="250 px" ControlToValidate="txtyrsinsured" 
+                                            CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -867,8 +875,22 @@
                                             Width="354px"></asp:TextBox>
                                         <br />
                                         <asp:RequiredFieldValidator ID="rfvMplOperations" runat="server" 
-                                            ErrorMessage="RequiredFieldValidator" ControlToValidate="txtMplOperations" 
-                                            CssClass="validator"></asp:RequiredFieldValidator>
+                                            ErrorMessage="This field is required." Width="250 px" ControlToValidate="txtMplOperations" 
+                                            CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 5297px; height: 27px" align="left">
+                                        &nbsp; Retail Dealership&nbsp;</td>
+                                    <td style="width: 360px; height: 27px" align="left">
+                                        <asp:CheckBox ID="cbRetailDealership" runat="server" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 5297px; height: 27px" align="left">
+                                        &nbsp; Wholesale Dealership&nbsp;</td>
+                                    <td style="width: 360px; height: 27px" align="left">
+                                        <asp:CheckBox ID="cbWholesaleDealership" runat="server" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -892,9 +914,10 @@
                                                     <br />
                                                     &nbsp;&nbsp;<span style="color: #ff0000; font-size: small">(If Yes, Please explain)</span>
                                                     <br />
-                                                    <asp:CustomValidator ID="customAutoParts" runat="server" 
-                                                        ControlToValidate="txtSellPercentage" ErrorMessage="CustomValidator" 
-                                                        ClientValidationFunction="Custom_rdoAutoParts" CssClass="validator"></asp:CustomValidator>
+                                                    <asp:CustomValidator ID="customAutoParts" runat="server"
+                                                        ControlToValidate="txtSellPercentage" ErrorMessage="Select either yes or no." 
+                                                        ClientValidationFunction="Custom_rdoAutoParts" CssClass="validator" 
+                                                        Display="Dynamic"></asp:CustomValidator>
                                                 </td>
                                                 <td align="center" style="width: 73px; height: 38px;">
                                                     <asp:RadioButton ID="rdAutoPartsYes" GroupName="AutoParts" runat="server" />
@@ -914,6 +937,11 @@
                                                 <td style="width: 211px" align="left">
                                                     <span style="color: #ff0000">*</span>Operate a Salvage Yard:
                                                     <br />
+                                                    <asp:CustomValidator ID="CustomValidator3" runat="server" 
+                                                        ErrorMessage="Select either yes or no." CssClass="validator" 
+                                                        ControlToValidate="txtSellPercentage" 
+                                                        ClientValidationFunction="Custom_rdoOperateSalvage" Display="Dynamic"></asp:CustomValidator>
+                                                    <br />
                                                 </td>
                                                 <td align="center" style="width: 73px">
                                                     <asp:RadioButton ID="rdoOperateSalvageYardYes" GroupName="OperateSalvageYard" runat="server" />
@@ -931,6 +959,10 @@
                                                     &nbsp; Locations:
                                                     <br />
                                                     &nbsp;&nbsp;<span style="color: #ff0000; font-size: small">(If Yes, Please explain)</span>
+                                                    <br />
+                                                    <asp:CustomValidator ID="CustomValidator4" runat="server" 
+                                                        ErrorMessage="Select Either Yes or No." CssClass="validator" ControlToValidate="txtSellPercentage" 
+                                                        ClientValidationFunction="Custom_rdoGarageOperation" Display="Dynamic"></asp:CustomValidator>
                                                     <br />
                                                     <asp:Label ID="lblGarageOperationOtherLocationCrumb" runat="server" Text="Please explain." CssClass="crumb"></asp:Label>
                                                     <br />
@@ -952,7 +984,11 @@
                                                 <td style="width: 211px" align="left">
                                                     <span style="color: #ff0000">*</span>Any Other Business Operations<br />
                                                     &nbsp; on same premises Owned by Insured:<br />
-                                                    &nbsp;&nbsp;<span style="color: #ff0000; font-size: small">(If Yes, Please explain)</span>
+                                                    &nbsp;&nbsp;<span style="color: #ff0000; font-size: small">(If Yes, Please explain)<br />
+                                                    </span>&nbsp;<asp:CustomValidator ID="customOtherBusiness" runat="server" 
+                                                        ErrorMessage="Select Either Yes or No." CssClass="validator" ControlToValidate="txtMplOtherBusiness" 
+                                                        ClientValidationFunction="Custom_rdoOtherBusiness" Display="Dynamic" 
+                                                        ValidateEmptyText="True"></asp:CustomValidator>
                                                     <br />
                                                 </td>
                                                 <td align="center" style="width: 73px">
@@ -971,10 +1007,10 @@
                                             <tr>
                                                 <td style="width: 211px" align="left">
                                                     <span style="color: #ff0000">*</span>Do you own a Wrecker:<br />
-                                                    <asp:CustomValidator ID="CustomValidator1" runat="server" 
+                                                    <asp:CustomValidator ID="customHasWrecker" runat="server" 
                                                         ClientValidationFunction="Custom_rdoHasWrecker" 
-                                                        ControlToValidate="txtMplOtherLocations" CssClass="validator" 
-                                                        ErrorMessage="CustomValidator"></asp:CustomValidator>
+                                                        ControlToValidate="txtMplOtherBusiness" CssClass="validator" 
+                                                        ErrorMessage="Select Either Yes Or No" Display="Dynamic"></asp:CustomValidator>
                                                     <br />
                                                 </td>
                                                 <td align="center" style="width: 73px">
@@ -992,9 +1028,12 @@
                                                     <span style="color: #ff0000">*<span style="color: #000000"> Do you own a </span><span
                                                         style="color: #000000">Rollback:</span></span>
                                                     <br />
-                                                    <asp:CustomValidator ID="CustomValidator2" runat="server" 
-                                                        ControlToValidate="txtMplOtherLocations" CssClass="validator" 
-                                                        ErrorMessage="CustomValidator"></asp:CustomValidator>
+                                                    <asp:TextBox Visible="false" id="tbRollBack" runat="server"></asp:TextBox>
+                                                    <asp:CustomValidator ID="customHasRollBack" runat="server" 
+                                                        ControlToValidate="tbRollBack" CssClass="validator" 
+                                                        ErrorMessage="Select Either Yes or No" 
+                                                        ClientValidationFunction="Custom_rdoHasRollback" ValidateEmptyText="True" 
+                                                        Display="Dynamic"></asp:CustomValidator>
                                                     <br />
                                                 </td>
                                                 <td align="center" style="width: 73px">
@@ -1019,8 +1058,9 @@
                                                     <br />
                                                     <asp:CustomValidator ID="customOwnTowBar" runat="server" 
                                                         ClientValidationFunction="Custom_rdoOwnTowBar" 
-                                                        ControlToValidate="txtMplOtherBusiness" CssClass="validator" 
-                                                        ErrorMessage="CustomValidator"></asp:CustomValidator>
+                                                        ControlToValidate="txtMplDollie" CssClass="validator" 
+                                                        ErrorMessage="Select Either Yes or No" ValidateEmptyText="True" 
+                                                        Display="Dynamic"></asp:CustomValidator>
                                                     <br />
                                                 </td>
                                                 <td align="center" style="width: 73px; height: 40px;">
@@ -1053,7 +1093,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" style="height: 20px" align="center">
-                                        <strong><span style="color: #ff0000">*</span> Owners / Spouses / Driver / Employees
+                                        <strong display="none"><span style="color: #ff0000">*</span> Owners / Spouses / Driver / Employees
                                             / Person furnished Autos</strong>
                                     </td>
                                 </tr>
@@ -1140,7 +1180,7 @@
                                 <table style="width: 680px; height: 240px" border="0" cellpadding="0" cellspacing="0"
                                     class="fieldset">
                                     <tr>
-                                        <td colspan="5" style="height: 188px" width="100%">
+                                        <td colspan="6" style="height: 188px" width="100%">
                                             <table>
                                                 <tr>
                                                     <td style="width: 284px" align="left">
@@ -1208,6 +1248,8 @@
                                         <td style="width: 100px;">
                                         </td>
                                         <td style="width: 100px;">
+                                            &nbsp;</td>
+                                        <td style="width: 100px;">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1221,7 +1263,10 @@
                                             Carrier
                                         </td>
                                         <td style="width: 100px; height: 15px;">
-                                            Amount Paid
+                                            Loss<br /> Amount Paid
+                                        </td>
+                                        <td style="width: 100px; height: 15px;">
+                                            Premium
                                         </td>
                                         <td style="width: 100px; height: 15px;">
                                             Details
@@ -1252,6 +1297,9 @@
                                             <asp:TextBox ID="txtAmtpaid1" runat="server" Width="64px" MaxLength="9" />
                                             <asp:RegularExpressionValidator ID="rfvAmountPaid1" runat="server" ControlToValidate="txtAmtpaid1"
                                                 ErrorMessage="Invalid Amount" ValidationExpression="\d+(\.\d+)?$">*</asp:RegularExpressionValidator>
+                                        </td>
+                                        <td style="width: 100px" valign="top">
+                                            <asp:TextBox ID="tbPremium1" runat="server"></asp:TextBox>
                                         </td>
                                         <td style="width: 100px" valign="top">
                                             <asp:TextBox ID="txtMplDetails1" runat="server" TextMode="MultiLine" Width="180px"
@@ -1285,6 +1333,9 @@
                                                 ErrorMessage="Invalid Amount" ValidationExpression="\d+(\.\d+)?$">*</asp:RegularExpressionValidator>
                                         </td>
                                         <td style="width: 100px" valign="top">
+                                            <asp:TextBox ID="tbPremium2" runat="server"></asp:TextBox>
+                                        </td>
+                                        <td style="width: 100px" valign="top">
                                             <asp:TextBox ID="txtMplDetails2" runat="server" TextMode="MultiLine" Width="180px"
                                                 Height="60px" />
                                         </td>
@@ -1314,6 +1365,9 @@
                                             <asp:TextBox ID="txtAmtpaid3" runat="server" Width="64px" MaxLength="9" />
                                             <asp:RegularExpressionValidator ID="rfvAmountPaid3" runat="server" ControlToValidate="txtAmtpaid3"
                                                 ErrorMessage="InvalidAmount" ValidationExpression="\d+(\.\d+)?$">*</asp:RegularExpressionValidator>
+                                        </td>
+                                        <td style="width: 100px" valign="top">
+                                            <asp:TextBox ID="tbPremium3" runat="server"></asp:TextBox>
                                         </td>
                                         <td style="width: 100px" valign="top">
                                             <asp:TextBox ID="txtMplDetails3" runat="server" TextMode="MultiLine" Width="180px"

@@ -81,7 +81,8 @@ function Select2_onclick() {
 
 // ]]>
     </script>
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 </head>
    <body background="(EmptyReference!)" leftmargin="0" marginheight="0" marginwidth="0"
     topmargin="0">
