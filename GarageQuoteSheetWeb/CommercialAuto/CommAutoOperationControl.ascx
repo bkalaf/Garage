@@ -1,5 +1,6 @@
 <%@ Control Language="VB" AutoEventWireup="false" CodeFile="CommAutoOperationControl.ascx.vb"
     Inherits="UserControl947.CommAutoOperationControl" %>
+<link href="../StyleSheet.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 <script language="JavaScript" type="text/javascript">
@@ -64,14 +65,32 @@ function up(lstr)
 {
 	var str=lstr.value;
 	lstr.value=str.toUpperCase();
-}
+          };
 
-$("document").ready(function () {
-    $("#radioDOT").click(function () { $("#tbFilingNumber").show(); });
-    $("#radioMC").click(function () { $("#tbFilingNumber").show(); });
-    $("#radioUnknown").click(function () { $("#tbFilingNumber").hide(); });
-    $("#tbFilingNumber").hide();
-});
+          $("document").ready(function () {
+              var selector = $("#Operation_tbFilingNumber");
+              var selector2 = $("#Operation_lblFilingNumber");
+              $("#Operation_radioDOT").change(function () {
+                  if (document.getElementById("Operation_radioDOT").value) {
+                      selector.show();
+                      selector2.show();
+                  }
+              });
+              $("#Operation_radioMC").change(function () {
+                  if (document.getElementById("Operation_radioMC").value) {
+                      selector.show();
+                      selector2.show();
+                  }
+              });
+              $("#Operation_radioUnknown").change(function () {
+                  if (document.getElementById("Operation_radioUnknown").value) {
+                      selector.hide();
+                      selector2.hide();
+                  }
+              });
+              selector.hide();
+              selector2.hide();
+          });
 </script>
 
 <asp:UpdatePanel ID="updatepanel1" runat="server">
@@ -87,12 +106,13 @@ $("document").ready(function () {
                     <td align="Left" style="width: 361px">
                         <asp:TextBox ID="txtApplicantName" runat="server" MaxLength="50" Width="150px" TabIndex="7"
                             onkeyup="up(this)" />
-                        <asp:RequiredFieldValidator ID="reqfvappname" runat="server" ControlToValidate="txtApplicantName"
-                            ErrorMessage="Applicant Name Cannot be Blank(Operations)" ValidationGroup="Garage"
-                            EnableClientScript="true">*</asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="regexpName" runat="server" ControlToValidate="txtApplicantName"
                             ErrorMessage="Applicant Name(Operation)" ValidationExpression="^[a-zA-Z'.\s]{1,40}$"
                             ValidationGroup="Garage">*</asp:RegularExpressionValidator>
+                        <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
+                            ControlToValidate="txtApplicantName" CssClass="validator" Display="Dynamic" 
+                            ErrorMessage="This field is required." Width="170px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -102,8 +122,10 @@ $("document").ready(function () {
                     <td align="Left" style="width: 361px">
                         <asp:TextBox ID="txtTradeName" runat="server" MaxLength="50" Width="244px" TabIndex="8"
                             onkeyup="up(this)" />
-                        <asp:RequiredFieldValidator ID="ReqValTradename" runat="server" ControlToValidate="txtTradeName"
-                            ErrorMessage="Busniess Name Cannot be Blank(Operations)" ValidationGroup="Garage">*</asp:RequiredFieldValidator>
+                        <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
+                            ControlToValidate="txtTradeName" CssClass="validator" Display="Dynamic" 
+                            ErrorMessage="This field is required." Width="170px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -112,8 +134,10 @@ $("document").ready(function () {
                     </td>
                     <td align="Left" style="width: 361px">
                         <asp:TextBox ID="txtaddress" runat="server" MaxLength="50" Width="244px" TabIndex="9" />
-                        <asp:RequiredFieldValidator ID="reqvalgargaddresss" runat="server" ControlToValidate="txtaddress"
-                            ErrorMessage="Garage Address Cannot be Blank(Operations)" ValidationGroup="Garage">*</asp:RequiredFieldValidator>
+                        <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
+                            ControlToValidate="txtaddress" CssClass="validator" Display="Dynamic" 
+                            ErrorMessage="This field is required." Width="170px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -122,8 +146,10 @@ $("document").ready(function () {
                     </td>
                     <td align="Left" style="width: 361px; height: 24px;">
                         <asp:TextBox ID="txtCity" runat="server" MaxLength="50" Width="244px" TabIndex="10" />
-                        <asp:RequiredFieldValidator ID="reqfieldvalidcity" runat="server" ControlToValidate="txtCity"
-                            ErrorMessage="City Cannot be Blank(Operations)" ValidationGroup="Garage">*</asp:RequiredFieldValidator>
+                        <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
+                            ControlToValidate="txtCity" CssClass="validator" Display="Dynamic" 
+                            ErrorMessage="This field is required." Width="170px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -144,6 +170,10 @@ $("document").ready(function () {
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtState"
                             ErrorMessage="State Cannot be Blank(Operations)" ValidationGroup="Garage">*</asp:RequiredFieldValidator>
                         <asp:Label ID="lblStateMsg" runat="server" ForeColor="red"></asp:Label>
+                        <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
+                            ControlToValidate="txtState" CssClass="validator" Display="Dynamic" 
+                            ErrorMessage="This field is required." Width="170px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -154,6 +184,10 @@ $("document").ready(function () {
                         <asp:TextBox ID="txtZIP" runat="server" MaxLength="5" Width="75px" TabIndex="13" />
                         <asp:RequiredFieldValidator ID="rqfzipcode" runat="server" ControlToValidate="txtZIP"
                             ErrorMessage="ZipCode Cannot be Blank(Operations)" ValidationGroup="Garage">*</asp:RequiredFieldValidator>
+                        <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" 
+                            ControlToValidate="txtZIP" CssClass="validator" Display="Dynamic" 
+                            ErrorMessage="This field is required." Width="170px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -205,6 +239,11 @@ $("document").ready(function () {
                             <asp:ListItem Value="2">4 - 5 Years</asp:ListItem>
                             <asp:ListItem Value="3">6+ Years</asp:ListItem>
                         </asp:DropDownList>
+                        <br />
+                        <asp:RangeValidator ID="RangeValidator1" runat="server" 
+                            ControlToValidate="ddlYearsInBusiness" CssClass="validator" Display="Dynamic" 
+                            ErrorMessage="Please select a valid value." MaximumValue="4" MinimumValue="1" 
+                            Width="220px"></asp:RangeValidator>
                     </td>
                 </tr>
                 <tr>
@@ -212,10 +251,12 @@ $("document").ready(function () {
                         <span style="color: #ff0000">*</span> Years Insured:
                     </td>
                     <td style="width: 400px" align="left">
-                        <asp:TextBox ID="txtyrs" runat="server" MaxLength="2" Width="50px" TabIndex="16"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtyrs"
-                            ErrorMessage="Years Insured Cannot be Blank(Operations)" ValidationGroup="Garage"
-                            SetFocusOnError="True">*</asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtyrs" runat="server" MaxLength="2" Width="50px" 
+                            TabIndex="16" Height="22px"></asp:TextBox>
+                        <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" 
+                            ControlToValidate="txtyrs" CssClass="validator" Display="Dynamic" 
+                            ErrorMessage="This field is required." Width="170px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -227,8 +268,9 @@ $("document").ready(function () {
                     <td style="height: 27px; width: 361px;" align="left">
                         <asp:TextBox ID="txtMplOperations" runat="server" Height="61px" TextMode="MultiLine"
                             MaxLength="100" Width="354px" TabIndex="17"></asp:TextBox><asp:RequiredFieldValidator
-                                ID="rfvmlpoper" runat="server" ErrorMessage="Operations of Insured Cannot be Blank(Operations)"
-                                ControlToValidate="txtMplOperations" ValidationGroup="Garage">*</asp:RequiredFieldValidator>
+                                ID="RequiredFieldValidator13" runat="server" ErrorMessage="This field is required."
+                                ControlToValidate="txtMplOperations" CssClass="validator" 
+                            Display="Dynamic" Width="170px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -238,9 +280,10 @@ $("document").ready(function () {
                     </td>
                     <td style="height: 27px; width: 361px;" align="left">
                         <asp:TextBox ID="txtnumyrs" runat="server" Height="61px" TextMode="MultiLine" MaxLength="100"
-                            Width="354px" TabIndex="18"></asp:TextBox><asp:RequiredFieldValidator ID="rfvnumyrs"
-                                runat="server" ErrorMessage="Number of Years Cannot be Blank(Operations)" ValidationGroup="Garage"
-                                ControlToValidate="txtnumyrs">*</asp:RequiredFieldValidator>
+                            Width="354px" TabIndex="18"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator14"
+                                runat="server" ErrorMessage="This field is required."
+                                ControlToValidate="txtnumyrs" CssClass="validator" Display="Dynamic" 
+                            Width="170px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -278,21 +321,25 @@ $("document").ready(function () {
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 360px" align="left">
-                                    <asp:RadioButton ID="radioDOT" runat="server" GroupName="FilingNumber" 
-                                        Text="DOT #" />
+                                <td style="width: 360px" align="center">
+                                    <asp:RadioButton ID="radioDOT" runat="server" GroupName="FilingNumber" />
+                                    <br />
+                                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                                 </td>
                                 <td align="center" style="width: 73px; height: 38px;">
-                                    <asp:RadioButton ID="radioMC" runat="server" GroupName="FilingNumber" 
-                                        Text="MC#" />
+                                    <asp:RadioButton ID="radioMC" runat="server" GroupName="FilingNumber" />
+                                    <asp:Label ID="Label2" runat="server" Text="MC #"></asp:Label>
                                 </td>
                                 <td align="center" style="width: 74px; height: 38px;">
                                     <asp:RadioButton ID="radioUnknown" runat="server" GroupName="FilingNumber" 
-                                        Text="Unknown" Width="93px" />
+                                        Width="93px" />
+                                    <asp:Label ID="Label3" runat="server" Text="Unknown"></asp:Label>
                                 </td>
-                                <td>
+                                <td align="right">
                                     <asp:TextBox ID="tbFilingNumber" runat="server" Width="128px"></asp:TextBox>
-                                    <asp:Label ID="Label1" runat="server" Text="  Enter DOT/MC#"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblFilingNumber" runat="server" Text="  Enter DOT/MC#" 
+                                        Font-Bold="True" ForeColor="Red"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -324,9 +371,10 @@ $("document").ready(function () {
                     </td>
                     <td style="width: 361px">
                         <asp:TextBox runat="server" TextMode="multiline" ID="txtMplCommoditieshauled" Height="60px"
-                            Width="360px" MaxLength="100" TabIndex="23" /><asp:RequiredFieldValidator ID="rfvComm"
-                                runat="server" ErrorMessage="Commodities Hauled Cannot be Blank(Operations)"
-                                ControlToValidate="txtMplCommoditieshauled" ValidationGroup="Garage">*</asp:RequiredFieldValidator>
+                            Width="360px" MaxLength="100" TabIndex="23" /><asp:RequiredFieldValidator ID="RequiredFieldValidator15"
+                                runat="server" ErrorMessage="This field is required."
+                                ControlToValidate="txtMplCommoditieshauled" CssClass="validator" 
+                            Display="Dynamic" Width="170px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -335,9 +383,11 @@ $("document").ready(function () {
                     </td>
                     <td style="width: 361px;">
                         <asp:TextBox runat="server" TextMode="multiline" ID="txtradius" Height="60px" Width="360px"
-                            MaxLength="100" TabIndex="24" /><asp:RequiredFieldValidator ID="rfvradius" runat="server"
-                                ErrorMessage="Radius of Operation Cannot be Blank(Operations)" ValidationGroup="Garage"
-                                ControlToValidate="txtradius">*</asp:RequiredFieldValidator>
+                            MaxLength="100" TabIndex="24" />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server"
+                                ErrorMessage="This field is required."
+                                ControlToValidate="txtradius" CssClass="validator" Display="Dynamic" 
+                            Width="170px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -346,9 +396,10 @@ $("document").ready(function () {
                     </td>
                     <td style="width: 361px">
                         <asp:TextBox runat="server" TextMode="multiline" ID="txtmulticities" Height="60px"
-                            Width="360px" MaxLength="100" TabIndex="25" /><asp:RequiredFieldValidator ID="rfvcities"
-                                runat="server" ErrorMessage="Cities in which units are operated Cannot be Blank(Operations)"
-                                ControlToValidate="txtmulticities" ValidationGroup="Garage">*</asp:RequiredFieldValidator>
+                            Width="360px" MaxLength="100" TabIndex="25" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator17"
+                                runat="server" ErrorMessage="This field is required." ControlToValidate="txtmulticities" 
+                            CssClass="validator" Display="Dynamic" Width="170px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
             </table>
@@ -356,6 +407,8 @@ $("document").ready(function () {
     </ContentTemplate>
     <Triggers>
         <asp:PostBackTrigger ControlID="txtState" />
+<asp:PostBackTrigger ControlID="ddlYearsInBusiness"></asp:PostBackTrigger>
+<asp:PostBackTrigger ControlID="ddlYearsInBusiness"></asp:PostBackTrigger>
 <asp:PostBackTrigger ControlID="ddlYearsInBusiness"></asp:PostBackTrigger>
     </Triggers>
     <Triggers>

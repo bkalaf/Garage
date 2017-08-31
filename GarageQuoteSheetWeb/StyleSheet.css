@@ -1,0 +1,12 @@
+﻿body {
+}
+.validator
+{
+    font-family: "Segoe UI Semibold";
+    font-size: medium;
+    font-weight: bold;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: capitalize;
+    color: #FF0000;
+}

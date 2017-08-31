@@ -118,6 +118,9 @@
         <input name="TextBox17" id="TextBox17" style="width:65px;" type="text">
         </td>
         */
+        function setChangedEvent(control) {
+            $(control).change(function () { masterSave(); });
+        }
         function addDriver() {           
             var current = parseInt(document.getElementById("tbDriverCount").value);
             var next = current + 1;
@@ -136,6 +139,9 @@
             document.getElementById("inputDriverAge3").value = "";
             document.getElementById("inputDriverName3").value = "";
             document.getElementById("tbDriverCount").value = next;
+
+            setChangedEvent(nextName);
+            setChangedEvent(nextAge);
         }
         function addEmployee() {
             var current = parseInt(document.getElementById("tbEmployeeCount").value);
@@ -155,6 +161,9 @@
             document.getElementById("inputEmployeeAge3").value = "";
             document.getElementById("inputEmployeeName3").value = "";
             document.getElementById("tbEmployeeCount").value = next;
+
+            setChangedEvent(nextName);
+            setChangedEvent(nextAge);
         }
         function addFurnishedPerson() {
             var current = parseInt(document.getElementById("tbPersonFurnishedCount").value);
@@ -174,8 +183,149 @@
             document.getElementById("inputPersonFurnishedAge3").value = "";
             document.getElementById("inputPersonFurnishedName3").value = "";
             document.getElementById("tbPersonFurnishedCount").value = next;
-        }
 
+            setChangedEvent(nextName);
+            setChangedEvent(nextAge);
+        }
+        function decideWhichControlSet() {
+            var useOld = $("#cbUseOldFormat").valueOf()
+            var useOldControl = document.getElementById("cbUseOldFormat")
+            alert(useOld)
+
+            var driverNameData = $("#txtMplOwnerSpouseNameAge").valueOf()
+            alert(driverNameData)
+
+            var txt = document.getElementById(#txtMplOwnerSpouseNameAge").value
+            if (txt[0] == "|" && txt[1] == "|" && txt[2] == "*") {
+                useOldControl.value = false 
+            } else {
+                useOldControl.value = true 
+            }
+        }
+        function hideControl(name) { $(name).hide(); }
+        function showControl(name) { $(show).show(); }
+        function useOldControl(func) {
+            func("#txtMplOwnerSpouseNameAge")
+            func("#txtMplDriversNameAge");
+            func("#txtMplEmployeeNameAge");
+            func("#txtMplPersonFurnishedAutoName");
+            func("#lblOwnerSpouse");
+            func("#lblEmployee");
+            func("#lblDriver");
+            func("#lblFurnishedPerson");
+        }
+        function useNewControl(func) {
+            func("#newPanel");
+        }
+        function toNameAge(name, age) {
+    return {
+        name: name,
+        age: age
+    };
+}
+
+function addToArray(baseArray, name, age) {
+    var newNA = toNameAge(name, age);
+    return baseArray.push(newNA);
+}
+
+function getValue(name) {
+    return document.getElementById(name).value;
+}
+
+function setValue(name, value) {
+    document.getElementById(name).value = "";
+    document.getElementById(name).value = value;
+}
+
+function saveOwnerSpouse() {
+    var owner = toNameAge(getValue("tbOwnerName"), getValue("tbOwnerAge"));
+    var spouse = toNameAge(getValue("tbSpouseName"), getValue("tbSpouseAge"));
+    var array = [owner, spouse];
+    setValue("txtMplOwnerNameAge", JSON.stringify(array));
+}
+
+function setTb(tb, value) {
+    if (value) {
+        setValue(tb, value);
+    }
+}
+
+function readOwnerSpouse() {
+    var value = getValue("txtMplOwnerNameAge");
+    if (value) {
+        var json = JSON.parse(value);
+        setTb("tbOwnerName", json[0].name);
+        setTb("tbOwnerAge", json[0].age);
+        setTb("tbSpouseName", json[1].name);
+        setTb("tbSpouseAge", json[1].age);
+    }
+}
+
+function saveGroup(count, baseName) {
+    var array = [];
+    for (var index = 0; index < count; index++) {
+        if (getValue("tb" + baseName + "Name" + (index + 1).toString())) {
+            var n = getValue("tb" + baseName + "Name" + (index + 1).toString());
+            var a = getValue("tb" + baseName + "Age" + (index + 1).toString())
+            addToArray(array, n, a);
+        }
+    }
+    if (array.length > 0) {
+        var control = "txtMpl" + baseName + "NameAge";
+        setValue(control, JSON.stringify(array));
+    }
+}
+
+function readGroup(count, baseName) {
+    var value = getValue("txtMpl" + baseName + "NameAge");
+    var max = 0;
+    if (value) {
+        var arr = JSON.parse(value);
+        if (count > arr.length) {
+            max = count
+        } else {
+            max = arr.length
+        }
+        if (arr.length > 0) {
+            for (var index = 0; index < max; index++) {
+                var element = arr[index];
+                var tbName = "tb" + baseName + "Name" + (index + 1).toString();
+                var tbAge = "tb" + baseName + "Age" + (index + 1).toString();
+                setValue(tbName, element.name);
+                setValue(tbAge, element.age);
+            }
+        }
+    }
+
+
+}
+
+function masterSave() {
+    saveGroup(getValue("tbCountDriver"), "Driver");
+    saveGroup(getValue("tbCountEmployee"), "Employee");
+    saveGroup(getValue("tbCountFurnishedPerson"), "FurnishedPerson");
+    saveOwnerSpouse();
+}
+
+function masterRead() {
+    readOwnerSpouse();
+    readGroup(getValue("tbCountDriver"), "Driver");
+    readGroup(getValue("tbCountEmployee"), "Employee");
+    readGroup(getValue("tbCountFurnishedPerson"), "FurnishedPerson");
+}
+        function setSingleEvent(name) {
+            var nameControl = "tb" + name + "Name";
+            var ageControl = "tb" + name + "Age";
+            setChangedEvent(nameControl);
+            setChangedEvent(ageControl);
+        }
+        function setGroupEvent(name, i) {
+            var nameControl = "tb" + name + "Name" + CStr(i);
+            var ageControl = "tb" + name + "Age" + CStr(i);
+            setChangedEvent(nameControl);
+            setChangedEvent(ageControl);
+        }
         $(document).ready(function () {
             linkRadioTextAndLabel(
                 "#<%= rdoGarageOperationOtherLocationYes.ClientID %>",
@@ -193,10 +343,21 @@
             $("#tbFurnishedPersonCount").hide();
             $("#btnInputAddDriver").click(addDriver);
             $("#btnInputAddEmployee").click(addEmployee);
-            $("#btnInputAddPersonFurnished").click(addFurnishedPerson);
-
-            
+            $("#btnInputAddPersonFurnished").click(addFurnishedPerson);           
+            masterRead();
+            setSingleEvent("Owner");
+            setSingleEvent("Spouse");
+            for (var i   = 0; i < CInt(getValue("tbCountDriver")); i++) {
+               setGroupEvent("Driver", i + 1);
+            }
+            for (var i   = 0; i < CInt(getValue("tbCountEmployee")); i++) {
+                setGroupEvent("Employee", i + 1);
+            }
+            for (var i   = 0; i < CInt(getValue("tbCountFurnishedPerson")); i++) {
+                setGroupEvent("FurnishedPerson", i + 1);
+            }      
         });
+
     </script>
     <style type="text/css" media="screen">
         body
@@ -1183,9 +1344,30 @@
                                 </tr>
                                 <tr>
                                     <td align="right" colspan="2">
+                                        
+                                        <asp:CheckBox ID="cbUseOldFormat" runat="server" />
+                                        
+                                    </td>
+                                    <td align="left" style="width: 360px">
+                                        
+                                        <asp:TextBox ID="tbDriverCount" runat="server">3</asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" colspan="2">
                                         &nbsp;</td>
                                     <td align="left" style="width: 360px">
+                                        
+                                        <asp:TextBox ID="tbEmployeeCount" runat="server">3</asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" colspan="2">
                                         &nbsp;</td>
+                                    <td align="left" style="width: 360px">
+                                        
+                                        <asp:TextBox ID="tbPersonFurnishedCount" runat="server">3</asp:TextBox>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="3" style="height: 20px" align="center">
@@ -1196,6 +1378,8 @@
                                 <tr>
                                     <td align="left" colspan="2">
                                         
+                                        <asp:Label ID="lblOwnerSpouse" runat="server" Text="Owner Spouse Name/Age:"></asp:Label>
+                                        
                                     </td>
                                     <td style="width: 360px">
                                         <asp:TextBox runat="server" TextMode="multiline" ID="txtMplOwnerSpouseNameAge" Height="60px"
@@ -1205,7 +1389,7 @@
                                 <tr>
                                     <td align="left" colspan="2">
                                         
-                                        <asp:TextBox ID="tbDriverCount" runat="server">3</asp:TextBox>
+                                        <asp:Label ID="lblDriver" runat="server" Text="Drivers Name/Age:"></asp:Label>
                                     </td>
                                     <td style="width: 360px">
                                         <asp:TextBox runat="server" TextMode="multiline" ID="txtMplDriversNameAge" Height="60px"
@@ -1215,7 +1399,7 @@
                                 <tr>
                                     <td align="left" colspan="2">
                                         
-                                        <asp:TextBox ID="tbEmployeeCount" runat="server">3</asp:TextBox>
+                                        <asp:Label ID="lblEmployee" runat="server" Text="Employees Name/Age:"></asp:Label>
                                     </td>
                                     <td style="width: 360px">
                                         <asp:TextBox runat="server" TextMode="multiline" ID="txtMplEmployeeNameAge" Height="60px"
@@ -1225,13 +1409,169 @@
                                 <tr>
                                     <td align="left" colspan="2">
                                         
-                                        <asp:TextBox ID="tbPersonFurnishedCount" runat="server">3</asp:TextBox>
+                                        <asp:Label ID="lblFurnishedPerson" runat="server" 
+                                            Text="Furnished Person Name/Age"></asp:Label>
                                     </td>
                                     <td style="width: 360px">
                                         <asp:TextBox runat="server" TextMode="multiline" ID="txtMplPersonFurnishedAutoName"
                                             Height="60px" Width="360px" />
                                     </td>
                                 </tr>
+                                <asp:Panel runat="server" id="newPanel" >
+                                <tr>
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        Name</td>
+                                    <td style="width: 160px">
+                                        Age</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        Owner</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="TextBox1" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="TextBox2" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        Spouse</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="TextBox3" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="TextBox4" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        Driver</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="TextBox5" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="TextBox6" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="TextBox7" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="TextBox8" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr id="Tr1">
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="TextBox9" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="TextBox10" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td style="width: 660px" colspan=2 align="left">
+                                        <input id="Button1" type="button" value="Add Additional Driver" /></td>
+                                    
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        Employee</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="TextBox11" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="TextBox12" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="TextBox13" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="TextBox14" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr id="Tr2">
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="TextBox15" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="TextBox16" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td style="width: 660px" colspan=2 align="left">
+                                        <input id="Button2" type="button" value="Add Additional Employee" /></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        Person Furnished</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="TextBox17" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="TextBox18" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="TextBox19" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="TextBox20" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr id="Tr3">
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td align="left" class="style1">
+                                        <asp:TextBox ID="TextBox21" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 160px">
+                                        <asp:TextBox ID="TextBox22" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td align="left" class="style2">
+                                        &nbsp;</td>
+                                    <td style="width: 660px" colspan=2 align="left">
+                                        <input id="Button3" type="button" 
+                                            value="Add Additional Person Furnished" /></td>
+                                    
+                                </tr>
+                                </asp:Panel>
                                 <tr>
                                     <td align="left" class="style2">
                                         &nbsp;</td>

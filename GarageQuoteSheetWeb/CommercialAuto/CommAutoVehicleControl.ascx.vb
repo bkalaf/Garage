@@ -26,6 +26,18 @@ Namespace UserControl947
         End Property
 #End Region
 
+        Protected Sub ServerValidate_Deductible(sender As Object, e As ServerValidateEventArgs)
+            For index = 1 To 10
+                Dim name As String = "ddldeductible" + CStr(index)
+                Dim dropDown As DropDownList = FindControl(name)
+                If dropDown.SelectedIndex = -1 Then
+                    e.IsValid = False
+                Else
+                    e.IsValid = True
+                End If
+            Next
+
+        End Sub
         Private Function Validate() As String Implements ISubscriber.Validate
             'Validation Part Here
 

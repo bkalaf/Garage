@@ -25,13 +25,13 @@ function processDD(dropDown) {
     var selector = $("#" + name);
     selector.empty();
     var option0 = "<option value='0'>Select One</option>";
-    var option1 = "<option value='-1' display='none'>500</option>"; 
+    var option1 = "<option value='-1'>500</option>"; 
     var option2 = "<option value='2'>1000</option>";
     var option3 = "<option value='3'>2500</option>";
     var option4 = "<option value='4'>5000</option>";
 
     selector.append(option0, option1, option2, option3, option4);
-    selector.mouseleave(function () {
+    selector.change(function () {
         if (document.getElementById(name).value == -1) {
             document.getElementById(name).value = 0;
         }
