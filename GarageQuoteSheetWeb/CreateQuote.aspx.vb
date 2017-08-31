@@ -384,32 +384,7 @@ Partial Class CreateQuote
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnSubmit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSubmit.Click
-        Me.txtMplDriversNameAge.Text = CreateNameAge(inputOwnerName.Text, inputOwnerAge.Text)
-        Me.txtMplOwnerSpouseNameAge.Text = CreateNameAge(inputSpouseName.Text, inputSpouseAge.Text)
-
-        Dim sb As StringBuilder = New StringBuilder()
-        For index = 1 To CInt(Me.tbDriverCount.Text)
-            Dim nameTb As TextBox = Me.FindControl("inputDriverName" + CStr(index))
-            Dim ageTb As TextBox = Me.FindControl("inputDriverAge" + CStr(index))
-            sb.Append(CreateNameAge(nameTb.Text, ageTb.Text))
-        Next
-        Me.txtMplDriversNameAge.Text = sb.ToString()
-
-        Dim sb2 As StringBuilder = New StringBuilder()
-        For index = 1 To CInt(Me.tbDriverCount.Text)
-            Dim nameTb As TextBox = Me.FindControl("inputEmployeeName" + CStr(index))
-            Dim ageTb As TextBox = Me.FindControl("inputEmployeeAge" + CStr(index))
-            sb2.Append(CreateNameAge(nameTb.Text, ageTb.Text))
-        Next
-        Me.txtMplEmployeeNameAge.Text = sb2.ToString()
-
-        Dim sb3 As StringBuilder = New StringBuilder()
-        For index = 1 To CInt(Me.tbDriverCount.Text)
-            Dim nameTb As TextBox = Me.FindControl("inputDriverName" + CStr(index))
-            Dim ageTb As TextBox = Me.FindControl("inputDriverAge" + CStr(index))
-            sb3.Append(CreateNameAge(nameTb.Text, ageTb.Text))
-        Next
-        Me.txtMplPersonFurnishedAutoName.Text = sb3.ToString()
+        
 
         logger.Debug("Entering CreateQuote.btnSubmit_Click")
         If Not chkValidations() Then
@@ -514,7 +489,7 @@ Partial Class CreateQuote
             If rdoIndivudual.Checked Then CType(objOperation, GarageOperations).BusinessType = "Individual"
             If rdoPartnerShip.Checked Then CType(objOperation, GarageOperations).BusinessType = "PartnerShip"
             CType(objOperation, GarageOperations).DollieOrTrailerDetails = txtMplDollie.Text
-            CType(objOperation, GarageOperations).FurnishedAutoDetails = txtMplPersonFurnishedAutoName.Text
+            CType(objOperation, GarageOperations).FurnishedAutoDetails = txtMplPersonFurnishedNameAge.Text
             CType(objOperation, GarageOperations).GarageOperationId = "-1"
             CType(objOperation, GarageOperations).GarageQuoteID = IIf(IsNumeric(objQuote.Id), objQuote.Id, "-1")
             If rdTowBarDollieTrailerYes.Checked Then CType(objOperation, GarageOperations).HasDollieOrTrailer = 1
@@ -660,8 +635,8 @@ Partial Class CreateQuote
             CType(objPerson, GaragePerson).GarageQuoteID = IIf(IsNumeric(objQuote.Id), objQuote.Id, "-1")
             If rdAnyChildreninHouseYes.Checked Then CType(objPerson, GaragePerson).IsChildHouseHold = 1
             If rdAnyChildreninHouseNo.Checked Then CType(objPerson, GaragePerson).IsChildHouseHold = 0
-            CType(objPerson, GaragePerson).PersonFurnishedAutos = txtMplPersonFurnishedAutoName.Text
-            CType(objPerson, GaragePerson).DriverNameAge = txtMplDriversNameAge.Text
+            CType(objPerson, GaragePerson).PersonFurnishedAutos = txtMplPersonFurnishedNameAge.Text
+            CType(objPerson, GaragePerson).DriverNameAge = txtMplDriverNameAge.Text
             CType(objPerson, GaragePerson).EmployeeNameAge = txtMplEmployeeNameAge.Text
 
             CType(objPerson, GaragePerson).NameAge = txtMplOwnerSpouseNameAge.Text
@@ -2235,7 +2210,7 @@ Partial Class CreateQuote
                 Else : rdoPartnerShip.Checked = False
                 End If
                 txtMplDollie.Text = CType(objOperation, GarageOperations).DollieOrTrailerDetails
-                txtMplPersonFurnishedAutoName.Text = CType(objOperation, GarageOperations).FurnishedAutoDetails
+                txtMplPersonFurnishedNameAge.Text = CType(objOperation, GarageOperations).FurnishedAutoDetails
                 intGOID = CType(objOperation, GarageOperations).GarageOperationId
                 If CType(objOperation, GarageOperations).HasDollieOrTrailer = 1 Then
                     rdTowBarDollieTrailerYes.Checked = True
@@ -2465,7 +2440,7 @@ Partial Class CreateQuote
                 Else : rdAnyChildreninHouseNo.Checked = False
                 End If
                 txtMplOwnerSpouseNameAge.Text = CType(objPerson, GaragePerson).NameAge
-                txtMplDriversNameAge.Text = CType(objPerson, GaragePerson).DriverNameAge
+                txtMplDriverNameAge.Text = CType(objPerson, GaragePerson).DriverNameAge
                 txtMplEmployeeNameAge.Text = CType(objPerson, GaragePerson).EmployeeNameAge
                 'txtMplPersonFurnishedAutoName.Text = CType(objPerson, GaragePerson).PersonFurnishedAutos
                 txtMplChildrenAges.Text = CType(objPerson, GaragePerson).AllAges
@@ -3251,4 +3226,9 @@ Partial Class CreateQuote
     'End Sub
 
 
+    Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
+        lblAgency.Text = "009999"
+        lblAgencyName.Text = "SOUTHERN INSURANCE UNDERWRITER"
+        lblAgentStatus.Text = "ACCOUNT CURRENT"
+    End Sub
 End Class

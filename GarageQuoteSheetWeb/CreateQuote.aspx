@@ -15,8 +15,8 @@
     <script type="text/javascript" src="./Js/prototype.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
-    <script type="text/javascript" src="./Js/bk.js"></script>
-    <script language="JavaScript" type="text/javascript">
+    <script type="text/javascript" src="JS/bk.js"></script>
+    <script type="text/javascript">
         function linkRadioTextAndLabel(yesButton, noButton, text, label) {
             $(yesButton).click(function () {
                 $(label).show();
@@ -30,7 +30,13 @@
             $(label).hide();
         };
 
-        
+        function toNameAge(name, age) {
+            return {
+                name: name,
+                age: age
+            };
+        }
+
         function addLoadEvent(func) {
             var oldonload = window.onload;
             if (typeof window.onload != 'function') {
@@ -45,91 +51,84 @@
             }
         }
 
-                                  
-                                
         addLoadEvent(function () {
             Xaprb.InputMask.setupElementMasks();
         });
-        //function validateRange ( src, args ) 
-        //    {       
-        //        var controlid= src.id.split("CFromValidator");  //substring(src.id.indexOf("CFromValidator"),src.length);//.split("CustomTermFromValidator");  
-        //        //alert(controlid.length);
-        //        var id=1;
-        //        if (controlid.length > 1)
-        //            id=controlid[1];
-        //        else
-        //        {
-        //            controlid= src.id.split("CToValidator");
-        //            
-        //            if (controlid.length > 1)
-        //            id=controlid[1];
-        //        }    
-        //        if (TwoRanage(src.id,id) == false)
-        //        {
-        //            args.IsValid = false;                
-        //        }     
-        //    }
-        //    function TwoRanage(val,id)
-        //    {       
-        //        var ToDate ="<%=MMDDYYYY %>";
-        //        var FromDate=01/01/1900;
-        //        //var str=val.substring(0,val.lastIndexOf("_"));
-        //        //var str=val;
-        //        
-        //      
-        //       if(document.getElementById(val + "txtTermFrom" + id).value != "")              
-        //           FromDate =document.getElementById(val + "txtTermFrom" + id).value;
-        //        if(document.getElementById(val + "txtTermto" + id).value != "")            
-        //           ToDate =document.getElementById(val + "txtTermto" + id).value;
 
-        //        var start = new Date (FromDate);
-        //        var end = new Date (ToDate);
-        //        
-        //        
-        //        
-        //        if (end <= start) 
-        //              return false;
-        //        else
-        //              return true;   
-
-        //    }
         function AllowAlphabet() {
             vKeycode = window.event.keyCode;
             if (!isAlphabet(vKeycode))
                 window.event.keyCode = 0;
 
         }
+
+        function getValue(name) {
+            return document.getElementById(name).value;
+        }
+
+        function setValue(name, value) {
+            document.getElementById(name).value = "";
+            document.getElementById(name).value = value;
+        }
+
         function isAlphabet(k) {
             return (((k >= 65) && (k <= 90)) || ((k >= 97) && (k <= 122)) || (k == 46) || (k == 32) || (k == 45));
         }
+
         function up(lstr) {
             var str = lstr.value;
             lstr.value = str.toUpperCase();
         }
 
-        /*
-        
-        <td style="width: 500px" align="left">
-        &nbsp;</td>
-        <td style="width: 500px" align="left">
-        <input name="TextBox6" id="TextBox6" style="width:300px;" type="text">
-        </td>
-        <td style="width: 360px">
-        <input name="TextBox17" id="TextBox17" style="width:65px;" type="text">
-        </td>
-        */
-        function setChangedEvent(control) {
-            $(control).change(function () { masterSave(); });
+        function addToArray(baseArray, name, age) {
+            var newNA = toNameAge(name, age);
+            return baseArray.push(newNA);
         }
-        function addDriver() {           
+
+        function saveOwnerSpouse() {
+            var owner = toNameAge(getValue("inputOwnerName"), getValue("inputOwnerAge"));
+            var spouse = toNameAge(getValue("inputSpouseName"), getValue("inputSpouseAge"));
+            var array = [owner, spouse];
+            setValue("txtMplOwnerSpouseNameAge", JSON.stringify(array));
+        }
+
+        function saveGroup(count, baseName) {
+            var array = [];
+            for (var index = 0; index < parseInt(count); index++) {
+                if (getValue("input" + baseName + "Name" + (index + 1).toString())) {
+                    var n = getValue("input" + baseName + "Name" + (index + 1).toString());
+                    var a = getValue("input" + baseName + "Age" + (index + 1).toString())
+                    addToArray(array, n, a);
+                }
+            }
+            if (array.length > 0) {
+                var control = "txtMpl" + baseName + "NameAge";
+                setValue(control, JSON.stringify(array));
+            }
+        }
+
+        function masterSave() {
+            saveGroup(getValue("tbDriverCount"), "Driver");
+            saveGroup(getValue("tbEmployeeCount"), "Employee");
+            saveGroup(getValue("tbPersonFurnishedCount"), "PersonFurnished");
+            saveOwnerSpouse();
+        }
+
+        function setChangedEvent(control) {
+            $("#" + control).change(function () {
+                masterSave();
+            });
+        }
+
+        function addDriver() {
             var current = parseInt(document.getElementById("tbDriverCount").value);
             var next = current + 1;
             var last = $("#endRowDriver");
             var nextName = "inputDriverName" + next;
             var nextAge = "inputDriverAge" + next;
             var html = "<tr><td style=\"width: 500px\" align=\"left\">\n&nbsp;</td>\n<td style=\"width: 500px\" align=\"left\">" +
-                       "<input name=\"" + nextName + "\" id=\"" + nextName + "\" style=\"width:300px;\" type=\"text\"></td><td style=\"width: 360px\">" +
-                       "<input name=\"" + nextAge + "\" id=\"" + nextAge + "\" style=\"width:65px;\" type=\"text\"></tr>";
+        "<input name=\"" + nextName + "\" id=\"" + nextName + "\" style=\"width:300px;\" type=\"text\"></td><td style=\"width: 360px\">" +
+        "<input name=\"" + nextAge + "\" id=\"" + nextAge + "\" style=\"width:65px;\" type=\"text\"></tr>";
             $(html).insertBefore(last);
 
             var currentName = document.getElementById("inputDriverName3").value;
@@ -143,6 +142,7 @@
             setChangedEvent(nextName);
             setChangedEvent(nextAge);
         }
+
         function addEmployee() {
             var current = parseInt(document.getElementById("tbEmployeeCount").value);
             var next = current + 1;
@@ -150,8 +150,8 @@
             var nextName = "inputEmployeeName" + next;
             var nextAge = "inputEmployeeAge" + next;
             var html = "<tr><td style=\"width: 500px\" align=\"left\">\n&nbsp;</td>\n<td style=\"width: 500px\" align=\"left\">" +
-                       "<input name=\"" + nextName + "\" id=\"" + nextName + "\" style=\"width:300px;\" type=\"text\"></td><td style=\"width: 360px\">" +
-                       "<input name=\"" + nextAge + "\" id=\"" + nextAge + "\" style=\"width:65px;\" type=\"text\"></tr>";
+        "<input name=\"" + nextName + "\" id=\"" + nextName + "\" style=\"width:300px;\" type=\"text\"></td><td style=\"width: 360px\">" +
+        "<input name=\"" + nextAge + "\" id=\"" + nextAge + "\" style=\"width:65px;\" type=\"text\"></tr>";
             $(html).insertBefore(last);
 
             var currentName = document.getElementById("inputEmployeeName3").value;
@@ -165,6 +165,7 @@
             setChangedEvent(nextName);
             setChangedEvent(nextAge);
         }
+
         function addFurnishedPerson() {
             var current = parseInt(document.getElementById("tbPersonFurnishedCount").value);
             var next = current + 1;
@@ -172,8 +173,8 @@
             var nextName = "inputPersonFurnishedName" + next;
             var nextAge = "inputPersonFurnishedAge" + next;
             var html = "<tr><td style=\"width: 500px\" align=\"left\">\n&nbsp;</td>\n<td style=\"width: 500px\" align=\"left\">" +
-                       "<input name=\"" + nextName + "\" id=\"" + nextName + "\" style=\"width:300px;\" type=\"text\"></td><td style=\"width: 360px\">" +
-                       "<input name=\"" + nextAge + "\" id=\"" + nextAge + "\" style=\"width:65px;\" type=\"text\"></tr>";
+        "<input name=\"" + nextName + "\" id=\"" + nextName + "\" style=\"width:300px;\" type=\"text\"></td><td style=\"width: 360px\">" +
+        "<input name=\"" + nextAge + "\" id=\"" + nextAge + "\" style=\"width:65px;\" type=\"text\"></tr>";
             $(html).insertBefore(last);
 
             var currentName = document.getElementById("inputPersonFurnishedName3").value;
@@ -187,177 +188,134 @@
             setChangedEvent(nextName);
             setChangedEvent(nextAge);
         }
-        function decideWhichControlSet() {
-            var useOld = $("#cbUseOldFormat").valueOf()
-            var useOldControl = document.getElementById("cbUseOldFormat")
-            alert(useOld)
 
-            var driverNameData = $("#txtMplOwnerSpouseNameAge").valueOf()
-            alert(driverNameData)
+        function hideControl(name) {
+            $(name).hide();
+        }
 
-            var txt = document.getElementById(#txtMplOwnerSpouseNameAge").value
-            if (txt[0] == "|" && txt[1] == "|" && txt[2] == "*") {
-                useOldControl.value = false 
-            } else {
-                useOldControl.value = true 
+        function showControl(name) {
+            $(show).show();
+        }
+
+        function setTb(tb, value) {
+            if (value) {
+                setValue(tb, value);
             }
         }
-        function hideControl(name) { $(name).hide(); }
-        function showControl(name) { $(show).show(); }
-        function useOldControl(func) {
-            func("#txtMplOwnerSpouseNameAge")
-            func("#txtMplDriversNameAge");
-            func("#txtMplEmployeeNameAge");
-            func("#txtMplPersonFurnishedAutoName");
-            func("#lblOwnerSpouse");
-            func("#lblEmployee");
-            func("#lblDriver");
-            func("#lblFurnishedPerson");
-        }
-        function useNewControl(func) {
-            func("#newPanel");
-        }
-        function toNameAge(name, age) {
-    return {
-        name: name,
-        age: age
-    };
-}
 
-function addToArray(baseArray, name, age) {
-    var newNA = toNameAge(name, age);
-    return baseArray.push(newNA);
-}
-
-function getValue(name) {
-    return document.getElementById(name).value;
-}
-
-function setValue(name, value) {
-    document.getElementById(name).value = "";
-    document.getElementById(name).value = value;
-}
-
-function saveOwnerSpouse() {
-    var owner = toNameAge(getValue("tbOwnerName"), getValue("tbOwnerAge"));
-    var spouse = toNameAge(getValue("tbSpouseName"), getValue("tbSpouseAge"));
-    var array = [owner, spouse];
-    setValue("txtMplOwnerNameAge", JSON.stringify(array));
-}
-
-function setTb(tb, value) {
-    if (value) {
-        setValue(tb, value);
-    }
-}
-
-function readOwnerSpouse() {
-    var value = getValue("txtMplOwnerNameAge");
-    if (value) {
-        var json = JSON.parse(value);
-        setTb("tbOwnerName", json[0].name);
-        setTb("tbOwnerAge", json[0].age);
-        setTb("tbSpouseName", json[1].name);
-        setTb("tbSpouseAge", json[1].age);
-    }
-}
-
-function saveGroup(count, baseName) {
-    var array = [];
-    for (var index = 0; index < count; index++) {
-        if (getValue("tb" + baseName + "Name" + (index + 1).toString())) {
-            var n = getValue("tb" + baseName + "Name" + (index + 1).toString());
-            var a = getValue("tb" + baseName + "Age" + (index + 1).toString())
-            addToArray(array, n, a);
-        }
-    }
-    if (array.length > 0) {
-        var control = "txtMpl" + baseName + "NameAge";
-        setValue(control, JSON.stringify(array));
-    }
-}
-
-function readGroup(count, baseName) {
-    var value = getValue("txtMpl" + baseName + "NameAge");
-    var max = 0;
-    if (value) {
-        var arr = JSON.parse(value);
-        if (count > arr.length) {
-            max = count
-        } else {
-            max = arr.length
-        }
-        if (arr.length > 0) {
-            for (var index = 0; index < max; index++) {
-                var element = arr[index];
-                var tbName = "tb" + baseName + "Name" + (index + 1).toString();
-                var tbAge = "tb" + baseName + "Age" + (index + 1).toString();
-                setValue(tbName, element.name);
-                setValue(tbAge, element.age);
+        function readOwnerSpouse() {
+            var value = getValue("txtMplOwnerSpouseNameAge");
+            if (value) {
+                var json = JSON.parse(value);
+                setTb("inputOwnerName", json[0].name);
+                setTb("inputOwnerAge", json[0].age);
+                setTb("inputSpouseName", json[1].name);
+                setTb("inputSpouseAge", json[1].age);
             }
         }
-    }
 
 
-}
+        function readGroup(count, baseName) {
+            var value = getValue("txtMpl" + baseName + "NameAge");
+            var max = 0;
+            if (value) {
+                var arr = JSON.parse(value);
+                if (count > arr.length) {
+                    max = count
+                } else {
+                    max = arr.length
+                }
+                if (arr.length > 0) {
+                    for (var index = 0; index < max; index++) {
+                        var element = arr[index];
+                        var tbName = "input" + baseName + "Name" + (index + 1).toString();
+                        var tbAge = "input" + baseName + "Age" + (index + 1).toString();
+                        setValue(tbName, element.name);
+                        setValue(tbAge, element.age);
+                    }
+                }
+            }
 
-function masterSave() {
-    saveGroup(getValue("tbCountDriver"), "Driver");
-    saveGroup(getValue("tbCountEmployee"), "Employee");
-    saveGroup(getValue("tbCountFurnishedPerson"), "FurnishedPerson");
-    saveOwnerSpouse();
-}
 
-function masterRead() {
-    readOwnerSpouse();
-    readGroup(getValue("tbCountDriver"), "Driver");
-    readGroup(getValue("tbCountEmployee"), "Employee");
-    readGroup(getValue("tbCountFurnishedPerson"), "FurnishedPerson");
-}
+        }
+
+
+
+        function masterRead() {
+            readOwnerSpouse();
+            readGroup(getValue("tbDriverCount"), "Driver");
+            readGroup(getValue("tbEmployeeCount"), "Employee");
+            readGroup(getValue("tbPersonFurnishedCount"), "PersonFurnished");
+        }
+
         function setSingleEvent(name) {
-            var nameControl = "tb" + name + "Name";
-            var ageControl = "tb" + name + "Age";
+            var nameControl = "input" + name + "Name";
+            var ageControl = "input" + name + "Age";
             setChangedEvent(nameControl);
             setChangedEvent(ageControl);
         }
+
         function setGroupEvent(name, i) {
-            var nameControl = "tb" + name + "Name" + CStr(i);
-            var ageControl = "tb" + name + "Age" + CStr(i);
+            var nameControl = "input" + name + "Name" + i.toString();
+            var ageControl = "input" + name + "Age" + i.toString();
             setChangedEvent(nameControl);
             setChangedEvent(ageControl);
+        }
+        var counts = ["tbPersonFurnishedCount", "tbDriverCount", "tbEmployeeCount", "cbUseOldFormat"];
+        var oldNameAges = ["lblOwnerSpouse", "lblDriver", "lblEmployee", "lblPersonsFurnished", "txtMplDriverNameAge",
+    "txtMplOwnerSpouseNameAge", "txtMplEmployeeNameAge", "txtMplPersonFurnishedNameAge"
+];
+        var newNamesAges = ["lblName", "lblAge", "lblOwner", "lblSpouse", "lblDrivers", "lblPersonsFurnished", "lblEmployee",
+    "btnInputAddAdditionalDriver", "btnInputAddAdditionalEmployee", "btnInputAddAdditionalPersonFurnished", "inputOwnerName",
+    "inputOwnerAge", "inputSpouseName", "inputSpouseAge", "inputDriverName1", "inputDriverAge1", "inputDriverName2", "inputDriverAge2",
+    "inputDriverName3", "inputDriverAge3", "inputEmployeeName1", "inputEmployeeAge1", "inputEmployeeName2", "inputEmployeeAge2",
+    "inputEmployeeName3", "inputEmployeeAge3", "inputPersonFurnishedName1", "inputPersonFurnishedAge1", "inputPersonFurnishedName2", "inputPersonFurnishedAge2",
+    "inputPersonFurnishedName3", "inputPersonFurnishedAge3"
+]
+
+        function hideControls(array) {
+            for (var i = 0; i < array.length; i++) {
+                $("#" + array[i]).hide();
+            }
         }
         $(document).ready(function () {
             linkRadioTextAndLabel(
-                "#<%= rdoGarageOperationOtherLocationYes.ClientID %>",
-                "#<%= rdoGarageOperationOtherLocationNo.ClientID %>",
-                "#<%= txtMplOtherLocations.ClientID %>",
-                "#<%= lblGarageOperationOtherLocationCrumb.ClientID %>");
-            $("#rdOwnRollbackYes").click(function () { $("#tbRollBack").Text = "True"; });
+        "#<%= rdoGarageOperationOtherLocationYes.ClientID %>",
+        "#<%= rdoGarageOperationOtherLocationNo.ClientID %>",
+        "#<%= txtMplOtherLocations.ClientID %>",
+        "#<%= lblGarageOperationOtherLocationCrumb.ClientID %>");
+            $("#rdOwnRollbackYes").click(function () {
+                $("#tbRollBack").Text = "True";
+            });
             $("#tbRollBack").Text = "False";
-            $("#txtMplOwnerSpouseNameAge").hide();
-            $("#txtMplDriversNameAge").hide();
-            $("#txtMplEmployeeNameAge").hide();
-            $("#txtMplPersonFurnishedAutoName").hide();
-            $("#tbDriverCount").hide();
-            $("#tbEmployeeCount").hide();
-            $("#tbFurnishedPersonCount").hide();
-            $("#btnInputAddDriver").click(addDriver);
-            $("#btnInputAddEmployee").click(addEmployee);
-            $("#btnInputAddPersonFurnished").click(addFurnishedPerson);           
+            $("#btnInputAddAdditionalDriver").click(addDriver);
+            $("#btnInputAddAdditionalEmployee").click(addEmployee);
+            $("#btnInputAddAdditionalPersonFurnished").click(addFurnishedPerson);
             masterRead();
             setSingleEvent("Owner");
             setSingleEvent("Spouse");
-            for (var i   = 0; i < CInt(getValue("tbCountDriver")); i++) {
-               setGroupEvent("Driver", i + 1);
+            for (var i = 0; i < getValue("tbDriverCount"); i++) {
+                setGroupEvent("Driver", i + 1);
             }
-            for (var i   = 0; i < CInt(getValue("tbCountEmployee")); i++) {
+            for (var i = 0; i < getValue("tbEmployeeCount"); i++) {
                 setGroupEvent("Employee", i + 1);
             }
-            for (var i   = 0; i < CInt(getValue("tbCountFurnishedPerson")); i++) {
+            for (var i = 0; i < getValue("tbPersonFurnishedCount"); i++) {
+                bk.js
                 setGroupEvent("FurnishedPerson", i + 1);
-            }      
-        });
-
+            }
+            hideControls(counts);
+            try {
+                var json = getValue("txtMplOwnerSpouseNameAge");
+                if (json != "" && JSON.parse(json)) {
+                    hideControls(oldNameAges);
+                } else {
+                    hideControls(newNamesAges);
+                }
+            } catch (e) {
+                hideControls(oldNameAges);
+            }
+        });   
     </script>
     <style type="text/css" media="screen">
         body
@@ -644,11 +602,9 @@ function masterRead() {
             text-transform: capitalize;
             color: #FF0000;
             width: 250px;
-           
         }
         #Button1
         {
-            width: 154px;
         }
         .style1
         {
@@ -732,6 +688,8 @@ function masterRead() {
                     <td align="left" valign="top">
                         <h1>
                             Commercial Garage Quote Sheet</h1>
+                        <asp:Button ID="Button1" runat="server" Text="||" Click="button1_click" 
+                            Width="20px" />                            
                     </td>
                 </tr>
             </table>
@@ -955,8 +913,7 @@ function masterRead() {
                                             Width="244px" />
                                         <br />
                                         <asp:RequiredFieldValidator ID="rfvApplicantName" runat="server" ControlToValidate="txtApplicantName"
-                                            ErrorMessage="This field is required." Width="250 px" CssClass="validator" 
-                                            Display="Dynamic"></asp:RequiredFieldValidator>
+                                            ErrorMessage="This field is required." Width="250 px" CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -974,9 +931,8 @@ function masterRead() {
                                     <td style="width: 100px" align="Left">
                                         <asp:TextBox ID="txtgaragingadd" runat="server" MaxLength="50" Width="244px" />
                                         <br />
-                                        <asp:RequiredFieldValidator ID="rfvGaragingAddress" runat="server" 
-                                            ErrorMessage="This field is required." Width="250 px" ControlToValidate="txtgaragingadd" 
-                                            CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="rfvGaragingAddress" runat="server" ErrorMessage="This field is required."
+                                            Width="250 px" ControlToValidate="txtgaragingadd" CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -987,8 +943,7 @@ function masterRead() {
                                         <asp:TextBox ID="txtcity" runat="server" MaxLength="50" Width="244px" />
                                         <br />
                                         <asp:RequiredFieldValidator ID="rfvCity" runat="server" ControlToValidate="txtCity"
-                                            ErrorMessage="This field is required." Width="250 px" CssClass="validator" 
-                                            Display="Dynamic"></asp:RequiredFieldValidator>
+                                            ErrorMessage="This field is required." Width="250 px" CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -998,9 +953,8 @@ function masterRead() {
                                     <td style="width: 100px" align="Left">
                                         <asp:TextBox ID="txtCounty" runat="server" MaxLength="50" Width="244px" />
                                         <br />
-                                        <asp:RequiredFieldValidator ID="rfvCounty" runat="server"  
-                                            ErrorMessage="This field is required." Width="250 px" ControlToValidate="txtCounty" 
-                                            CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="rfvCounty" runat="server" ErrorMessage="This field is required."
+                                            Width="250 px" ControlToValidate="txtCounty" CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -1011,13 +965,12 @@ function masterRead() {
                                         <asp:TextBox ID="txtState" runat="server" MaxLength="2" Width="20px" AutoPostBack="true" /><asp:Label
                                             ID="lblstateMsg" runat="server" ForeColor="Red"></asp:Label>
                                         <br />
-                                        <asp:RequiredFieldValidator ID="rfvState" runat="server" 
-                                            ErrorMessage="This field is required." Width="250 px" ControlToValidate="txtState" 
-                                            CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="rfvState" runat="server" ErrorMessage="This field is required."
+                                            Width="250 px" ControlToValidate="txtState" CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
                                         <br />
-                                        <asp:RegularExpressionValidator ID="regexState" runat="server" Width="250 px" 
-                                            ErrorMessage="Please enter a valid 2 letter state abbreviation." ControlToValidate="txtState" 
-                                            CssClass="validator" ValidationExpression="[A-Z][A-Z]" Display="Dynamic"></asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator ID="regexState" runat="server" Width="250 px" ErrorMessage="Please enter a valid 2 letter state abbreviation."
+                                            ControlToValidate="txtState" CssClass="validator" ValidationExpression="[A-Z][A-Z]"
+                                            Display="Dynamic"></asp:RegularExpressionValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -1027,15 +980,12 @@ function masterRead() {
                                     <td style="width: 100px; height: 10px;" align="Left">
                                         <asp:TextBox ID="txtZIP" runat="server" MaxLength="5" Width="75px" />
                                         <br />
-                                        <asp:RequiredFieldValidator ID="rfvZip" runat="server" 
-                                            ErrorMessage="This Field is Required." Width="250 px" ControlToValidate="txtZIP" 
-                                            CssClass="validator"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="rfvZip" runat="server" ErrorMessage="This Field is Required."
+                                            Width="250 px" ControlToValidate="txtZIP" CssClass="validator"></asp:RequiredFieldValidator>
                                         <br />
-                                        <asp:RegularExpressionValidator ID="regexZipCode" runat="server" 
-                                            
-                                            ErrorMessage="Please enter a valid zip code in either 5 digit (#####) or 9 digit (#####-####) format." ControlToValidate="txtZIP" 
-                                            CssClass="validator" Width="250 px" 
-                                            ValidationExpression="[0-9]{5}([-][0-9]{4})?" Display="Dynamic"></asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator ID="regexZipCode" runat="server" ErrorMessage="Please enter a valid zip code in either 5 digit (#####) or 9 digit (#####-####) format."
+                                            ControlToValidate="txtZIP" CssClass="validator" Width="250 px" ValidationExpression="[0-9]{5}([-][0-9]{4})?"
+                                            Display="Dynamic"></asp:RegularExpressionValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -1089,9 +1039,9 @@ function masterRead() {
                                                     <asp:ListItem Value="3">6+ Years</asp:ListItem>
                                                 </asp:DropDownList>
                                                 <br />
-                                                <asp:RangeValidator ID="rvYearsInBusiness" runat="server" 
-                                                    ErrorMessage="Please enter a valid value." ControlToValidate="ddlYearsInBusiness" 
-                                                    MinimumValue="0" MaximumValue="3" CssClass="validator" Display="Dynamic"></asp:RangeValidator>
+                                                <asp:RangeValidator ID="rvYearsInBusiness" runat="server" ErrorMessage="Please enter a valid value."
+                                                    ControlToValidate="ddlYearsInBusiness" MinimumValue="0" MaximumValue="3" CssClass="validator"
+                                                    Display="Dynamic"></asp:RangeValidator>
                                             </ContentTemplate>
                                             <Triggers>
                                                 <asp:PostBackTrigger ControlID="ddlYearsInBusiness" />
@@ -1106,9 +1056,8 @@ function masterRead() {
                                     <td style="width: 360px; height: 27px" align="left">
                                         <asp:TextBox ID="txtYrExp" runat="server" Width="27px"></asp:TextBox>
                                         <br />
-                                        <asp:RequiredFieldValidator ID="rfvYrExp" runat="server" 
-                                            ErrorMessage="This field is required." Width="250 px" ControlToValidate="txtYrExp" 
-                                            CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="rfvYrExp" runat="server" ErrorMessage="This field is required."
+                                            Width="250 px" ControlToValidate="txtYrExp" CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr id="tryearinsured" runat="server">
@@ -1118,9 +1067,8 @@ function masterRead() {
                                     <td style="width: 360px; height: 27px" align="left">
                                         <asp:TextBox ID="txtyrsinsured" runat="server" Width="27px"></asp:TextBox>
                                         <br />
-                                        <asp:RequiredFieldValidator ID="rfvYearsInsured" runat="server" 
-                                            ErrorMessage="This field is required." Width="250 px" ControlToValidate="txtyrsinsured" 
-                                            CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="rfvYearsInsured" runat="server" ErrorMessage="This field is required."
+                                            Width="250 px" ControlToValidate="txtyrsinsured" CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -1131,21 +1079,22 @@ function masterRead() {
                                         <asp:TextBox ID="txtMplOperations" runat="server" Height="61px" TextMode="MultiLine"
                                             Width="354px"></asp:TextBox>
                                         <br />
-                                        <asp:RequiredFieldValidator ID="rfvMplOperations" runat="server" 
-                                            ErrorMessage="This field is required." Width="250 px" ControlToValidate="txtMplOperations" 
-                                            CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="rfvMplOperations" runat="server" ErrorMessage="This field is required."
+                                            Width="250 px" ControlToValidate="txtMplOperations" CssClass="validator" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="height: 27px" align="left" colspan="2">
-                                        &nbsp; Retail Dealership&nbsp;</td>
+                                        &nbsp; Retail Dealership&nbsp;
+                                    </td>
                                     <td style="width: 360px; height: 27px" align="left">
                                         <asp:CheckBox ID="cbRetailDealership" runat="server" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="height: 27px" align="left" colspan="2">
-                                        &nbsp; Wholesale Dealership&nbsp;</td>
+                                        &nbsp; Wholesale Dealership&nbsp;
+                                    </td>
                                     <td style="width: 360px; height: 27px" align="left">
                                         <asp:CheckBox ID="cbWholesaleDealership" runat="server" />
                                     </td>
@@ -1171,10 +1120,9 @@ function masterRead() {
                                                     <br />
                                                     &nbsp;&nbsp;<span style="color: #ff0000; font-size: small">(If Yes, Please explain)</span>
                                                     <br />
-                                                    <asp:CustomValidator ID="customAutoParts" runat="server"
-                                                        ControlToValidate="txtSellPercentage" ErrorMessage="Select either yes or no." 
-                                                        ClientValidationFunction="Custom_rdoAutoParts" CssClass="validator" 
-                                                        Display="Dynamic"></asp:CustomValidator>
+                                                    <asp:CustomValidator ID="customAutoParts" runat="server" ControlToValidate="txtSellPercentage"
+                                                        ErrorMessage="Select either yes or no." ClientValidationFunction="Custom_rdoAutoParts"
+                                                        CssClass="validator" Display="Dynamic"></asp:CustomValidator>
                                                 </td>
                                                 <td align="center" style="width: 73px; height: 38px;">
                                                     <asp:RadioButton ID="rdAutoPartsYes" GroupName="AutoParts" runat="server" />
@@ -1194,10 +1142,9 @@ function masterRead() {
                                                 <td style="width: 211px" align="left">
                                                     <span style="color: #ff0000">*</span>Operate a Salvage Yard:
                                                     <br />
-                                                    <asp:CustomValidator ID="CustomValidator3" runat="server" 
-                                                        ErrorMessage="Select either yes or no." CssClass="validator" 
-                                                        ControlToValidate="txtSellPercentage" 
-                                                        ClientValidationFunction="Custom_rdoOperateSalvage" Display="Dynamic"></asp:CustomValidator>
+                                                    <asp:CustomValidator ID="CustomValidator3" runat="server" ErrorMessage="Select either yes or no."
+                                                        CssClass="validator" ControlToValidate="txtSellPercentage" ClientValidationFunction="Custom_rdoOperateSalvage"
+                                                        Display="Dynamic"></asp:CustomValidator>
                                                     <br />
                                                 </td>
                                                 <td align="center" style="width: 73px">
@@ -1217,11 +1164,12 @@ function masterRead() {
                                                     <br />
                                                     &nbsp;&nbsp;<span style="color: #ff0000; font-size: small">(If Yes, Please explain)</span>
                                                     <br />
-                                                    <asp:CustomValidator ID="CustomValidator4" runat="server" 
-                                                        ErrorMessage="Select Either Yes or No." CssClass="validator" ControlToValidate="txtSellPercentage" 
-                                                        ClientValidationFunction="Custom_rdoGarageOperation" Display="Dynamic"></asp:CustomValidator>
+                                                    <asp:CustomValidator ID="CustomValidator4" runat="server" ErrorMessage="Select Either Yes or No."
+                                                        CssClass="validator" ControlToValidate="txtSellPercentage" ClientValidationFunction="Custom_rdoGarageOperation"
+                                                        Display="Dynamic"></asp:CustomValidator>
                                                     <br />
-                                                    <asp:Label ID="lblGarageOperationOtherLocationCrumb" runat="server" Text="Please explain." CssClass="crumb"></asp:Label>
+                                                    <asp:Label ID="lblGarageOperationOtherLocationCrumb" runat="server" Text="Please explain."
+                                                        CssClass="crumb"></asp:Label>
                                                     <br />
                                                 </td>
                                                 <td align="center" style="width: 73px">
@@ -1242,10 +1190,9 @@ function masterRead() {
                                                     <span style="color: #ff0000">*</span>Any Other Business Operations<br />
                                                     &nbsp; on same premises Owned by Insured:<br />
                                                     &nbsp;&nbsp;<span style="color: #ff0000; font-size: small">(If Yes, Please explain)<br />
-                                                    </span>&nbsp;<asp:CustomValidator ID="customOtherBusiness" runat="server" 
-                                                        ErrorMessage="Select Either Yes or No." CssClass="validator" ControlToValidate="txtMplOtherBusiness" 
-                                                        ClientValidationFunction="Custom_rdoOtherBusiness" Display="Dynamic" 
-                                                        ValidateEmptyText="True"></asp:CustomValidator>
+                                                    </span>&nbsp;<asp:CustomValidator ID="customOtherBusiness" runat="server" ErrorMessage="Select Either Yes or No."
+                                                        CssClass="validator" ControlToValidate="txtMplOtherBusiness" ClientValidationFunction="Custom_rdoOtherBusiness"
+                                                        Display="Dynamic" ValidateEmptyText="True"></asp:CustomValidator>
                                                     <br />
                                                 </td>
                                                 <td align="center" style="width: 73px">
@@ -1264,10 +1211,9 @@ function masterRead() {
                                             <tr>
                                                 <td style="width: 211px" align="left">
                                                     <span style="color: #ff0000">*</span>Do you own a Wrecker:<br />
-                                                    <asp:CustomValidator ID="customHasWrecker" runat="server" 
-                                                        ClientValidationFunction="Custom_rdoHasWrecker" 
-                                                        ControlToValidate="txtMplOtherBusiness" CssClass="validator" 
-                                                        ErrorMessage="Select Either Yes Or No" Display="Dynamic"></asp:CustomValidator>
+                                                    <asp:CustomValidator ID="customHasWrecker" runat="server" ClientValidationFunction="Custom_rdoHasWrecker"
+                                                        ControlToValidate="txtMplOtherBusiness" CssClass="validator" ErrorMessage="Select Either Yes Or No"
+                                                        Display="Dynamic"></asp:CustomValidator>
                                                     <br />
                                                 </td>
                                                 <td align="center" style="width: 73px">
@@ -1285,12 +1231,10 @@ function masterRead() {
                                                     <span style="color: #ff0000">*<span style="color: #000000"> Do you own a </span><span
                                                         style="color: #000000">Rollback:</span></span>
                                                     <br />
-                                                    <asp:TextBox Visible="false" id="tbRollBack" runat="server"></asp:TextBox>
-                                                    <asp:CustomValidator ID="customHasRollBack" runat="server" 
-                                                        ControlToValidate="tbRollBack" CssClass="validator" 
-                                                        ErrorMessage="Select Either Yes or No" 
-                                                        ClientValidationFunction="Custom_rdoHasRollback" ValidateEmptyText="True" 
-                                                        Display="Dynamic"></asp:CustomValidator>
+                                                    <asp:TextBox Visible="false" ID="tbRollBack" runat="server"></asp:TextBox>
+                                                    <asp:CustomValidator ID="customHasRollBack" runat="server" ControlToValidate="tbRollBack"
+                                                        CssClass="validator" ErrorMessage="Select Either Yes or No" ClientValidationFunction="Custom_rdoHasRollback"
+                                                        ValidateEmptyText="True" Display="Dynamic"></asp:CustomValidator>
                                                     <br />
                                                 </td>
                                                 <td align="center" style="width: 73px">
@@ -1310,14 +1254,11 @@ function masterRead() {
                                                         &nbsp; or Tow Dollie or Trailer:</span></span><br />
                                                     &nbsp;&nbsp;<span style="color: #ff0000; font-size: small">(If Yes, Please explain)</span>
                                                     <br />
-                                                    <asp:Label ID="lblOwnTowBarCrumb" runat="server" CssClass="crumb" 
-                                                        Text="Please explain"></asp:Label>
+                                                    <asp:Label ID="lblOwnTowBarCrumb" runat="server" CssClass="crumb" Text="Please explain"></asp:Label>
                                                     <br />
-                                                    <asp:CustomValidator ID="customOwnTowBar" runat="server" 
-                                                        ClientValidationFunction="Custom_rdoOwnTowBar" 
-                                                        ControlToValidate="txtMplDollie" CssClass="validator" 
-                                                        ErrorMessage="Select Either Yes or No" ValidateEmptyText="True" 
-                                                        Display="Dynamic"></asp:CustomValidator>
+                                                    <asp:CustomValidator ID="customOwnTowBar" runat="server" ClientValidationFunction="Custom_rdoOwnTowBar"
+                                                        ControlToValidate="txtMplDollie" CssClass="validator" ErrorMessage="Select Either Yes or No"
+                                                        ValidateEmptyText="True" Display="Dynamic"></asp:CustomValidator>
                                                     <br />
                                                 </td>
                                                 <td align="center" style="width: 73px; height: 40px;">
@@ -1344,42 +1285,37 @@ function masterRead() {
                                 </tr>
                                 <tr>
                                     <td align="right" colspan="2">
-                                        
                                         <asp:CheckBox ID="cbUseOldFormat" runat="server" />
-                                        
                                     </td>
                                     <td align="left" style="width: 360px">
-                                        
                                         <asp:TextBox ID="tbDriverCount" runat="server">3</asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="right" colspan="2">
-                                        &nbsp;</td>
+                                        &nbsp;
+                                    </td>
                                     <td align="left" style="width: 360px">
-                                        
                                         <asp:TextBox ID="tbEmployeeCount" runat="server">3</asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="right" colspan="2">
-                                        &nbsp;</td>
+                                        &nbsp;
+                                    </td>
                                     <td align="left" style="width: 360px">
-                                        
                                         <asp:TextBox ID="tbPersonFurnishedCount" runat="server">3</asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="3" style="height: 20px" align="center">
-                                        <strong display="none"><span style="color: #ff0000">*</span> Owners / Spouses / Driver / Employees
-                                            / Person furnished Autos</strong>
+                                        <strong display="none"><span style="color: #ff0000">*</span> Owners / Spouses / Driver
+                                            / Employees / Person furnished Autos</strong>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="left" colspan="2">
-                                        
                                         <asp:Label ID="lblOwnerSpouse" runat="server" Text="Owner Spouse Name/Age:"></asp:Label>
-                                        
                                     </td>
                                     <td style="width: 360px">
                                         <asp:TextBox runat="server" TextMode="multiline" ID="txtMplOwnerSpouseNameAge" Height="60px"
@@ -1388,17 +1324,15 @@ function masterRead() {
                                 </tr>
                                 <tr>
                                     <td align="left" colspan="2">
-                                        
                                         <asp:Label ID="lblDriver" runat="server" Text="Drivers Name/Age:"></asp:Label>
                                     </td>
                                     <td style="width: 360px">
-                                        <asp:TextBox runat="server" TextMode="multiline" ID="txtMplDriversNameAge" Height="60px"
+                                        <asp:TextBox runat="server" TextMode="multiline" ID="txtMplDriverNameAge" Height="60px"
                                             Width="360px" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="left" colspan="2">
-                                        
                                         <asp:Label ID="lblEmployee" runat="server" Text="Employees Name/Age:"></asp:Label>
                                     </td>
                                     <td style="width: 360px">
@@ -1408,335 +1342,186 @@ function masterRead() {
                                 </tr>
                                 <tr>
                                     <td align="left" colspan="2">
-                                        
-                                        <asp:Label ID="lblFurnishedPerson" runat="server" 
-                                            Text="Furnished Person Name/Age"></asp:Label>
+                                        <asp:Label ID="lblFurnishedPerson" runat="server" Text="Furnished Person Name/Age"></asp:Label>
                                     </td>
                                     <td style="width: 360px">
-                                        <asp:TextBox runat="server" TextMode="multiline" ID="txtMplPersonFurnishedAutoName"
+                                        <asp:TextBox runat="server" TextMode="multiline" ID="txtMplPersonFurnishedNameAge"
                                             Height="60px" Width="360px" />
                                     </td>
                                 </tr>
-                                <asp:Panel runat="server" id="newPanel" >
+                                
                                 <tr>
                                     <td align="left" class="style2">
-                                        &nbsp;</td>
+                                        &nbsp;
+                                    </td>
                                     <td align="left" class="style1">
-                                        Name</td>
-                                    <td style="width: 160px">
-                                        Age</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="left" class="style2">
-                                        Owner</td>
-                                    <td align="left" class="style1">
-                                        <asp:TextBox ID="TextBox1" runat="server" Width="300px"></asp:TextBox>
+                                        <asp:Label runat="server" id="lblName" Text="Name" />
                                     </td>
                                     <td style="width: 160px">
-                                        <asp:TextBox ID="TextBox2" runat="server" Width="65px"></asp:TextBox>
+                                        <asp:Label runat="server" id="lblAge" Text="Age" />
                                     </td>
-                                    
                                 </tr>
                                 <tr>
                                     <td align="left" class="style2">
-                                        Spouse</td>
-                                    <td align="left" class="style1">
-                                        <asp:TextBox ID="TextBox3" runat="server" Width="300px"></asp:TextBox>
+                                        <asp:Label runat="server" id="lblOwner" Text="Owner" />
                                     </td>
-                                    <td style="width: 160px">
-                                        <asp:TextBox ID="TextBox4" runat="server" Width="65px"></asp:TextBox>
-                                    </td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="left" class="style2">
-                                        Driver</td>
-                                    <td align="left" class="style1">
-                                        <asp:TextBox ID="TextBox5" runat="server" Width="300px"></asp:TextBox>
-                                    </td>
-                                    <td style="width: 160px">
-                                        <asp:TextBox ID="TextBox6" runat="server" Width="65px"></asp:TextBox>
-                                    </td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="left" class="style2">
-                                        &nbsp;</td>
-                                    <td align="left" class="style1">
-                                        <asp:TextBox ID="TextBox7" runat="server" Width="300px"></asp:TextBox>
-                                    </td>
-                                    <td style="width: 160px">
-                                        <asp:TextBox ID="TextBox8" runat="server" Width="65px"></asp:TextBox>
-                                    </td>
-                                    
-                                </tr>
-                                <tr id="Tr1">
-                                    <td align="left" class="style2">
-                                        &nbsp;</td>
-                                    <td align="left" class="style1">
-                                        <asp:TextBox ID="TextBox9" runat="server" Width="300px"></asp:TextBox>
-                                    </td>
-                                    <td style="width: 160px">
-                                        <asp:TextBox ID="TextBox10" runat="server" Width="65px"></asp:TextBox>
-                                    </td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="left" class="style2">
-                                        &nbsp;</td>
-                                    <td style="width: 660px" colspan=2 align="left">
-                                        <input id="Button1" type="button" value="Add Additional Driver" /></td>
-                                    
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="left" class="style2">
-                                        Employee</td>
-                                    <td align="left" class="style1">
-                                        <asp:TextBox ID="TextBox11" runat="server" Width="300px"></asp:TextBox>
-                                    </td>
-                                    <td style="width: 160px">
-                                        <asp:TextBox ID="TextBox12" runat="server" Width="65px"></asp:TextBox>
-                                    </td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="left" class="style2">
-                                        &nbsp;</td>
-                                    <td align="left" class="style1">
-                                        <asp:TextBox ID="TextBox13" runat="server" Width="300px"></asp:TextBox>
-                                    </td>
-                                    <td style="width: 160px">
-                                        <asp:TextBox ID="TextBox14" runat="server" Width="65px"></asp:TextBox>
-                                    </td>
-                                    
-                                </tr>
-                                <tr id="Tr2">
-                                    <td align="left" class="style2">
-                                        &nbsp;</td>
-                                    <td align="left" class="style1">
-                                        <asp:TextBox ID="TextBox15" runat="server" Width="300px"></asp:TextBox>
-                                    </td>
-                                    <td style="width: 160px">
-                                        <asp:TextBox ID="TextBox16" runat="server" Width="65px"></asp:TextBox>
-                                    </td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="left" class="style2">
-                                        &nbsp;</td>
-                                    <td style="width: 660px" colspan=2 align="left">
-                                        <input id="Button2" type="button" value="Add Additional Employee" /></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="left" class="style2">
-                                        Person Furnished</td>
-                                    <td align="left" class="style1">
-                                        <asp:TextBox ID="TextBox17" runat="server" Width="300px"></asp:TextBox>
-                                    </td>
-                                    <td style="width: 160px">
-                                        <asp:TextBox ID="TextBox18" runat="server" Width="65px"></asp:TextBox>
-                                    </td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="left" class="style2">
-                                        &nbsp;</td>
-                                    <td align="left" class="style1">
-                                        <asp:TextBox ID="TextBox19" runat="server" Width="300px"></asp:TextBox>
-                                    </td>
-                                    <td style="width: 160px">
-                                        <asp:TextBox ID="TextBox20" runat="server" Width="65px"></asp:TextBox>
-                                    </td>
-                                    
-                                </tr>
-                                <tr id="Tr3">
-                                    <td align="left" class="style2">
-                                        &nbsp;</td>
-                                    <td align="left" class="style1">
-                                        <asp:TextBox ID="TextBox21" runat="server" Width="300px"></asp:TextBox>
-                                    </td>
-                                    <td style="width: 160px">
-                                        <asp:TextBox ID="TextBox22" runat="server" Width="65px"></asp:TextBox>
-                                    </td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="left" class="style2">
-                                        &nbsp;</td>
-                                    <td style="width: 660px" colspan=2 align="left">
-                                        <input id="Button3" type="button" 
-                                            value="Add Additional Person Furnished" /></td>
-                                    
-                                </tr>
-                                </asp:Panel>
-                                <tr>
-                                    <td align="left" class="style2">
-                                        &nbsp;</td>
-                                    <td align="left" class="style1">
-                                        Name</td>
-                                    <td style="width: 160px">
-                                        Age</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="left" class="style2">
-                                        Owner</td>
                                     <td align="left" class="style1">
                                         <asp:TextBox ID="inputOwnerName" runat="server" Width="300px"></asp:TextBox>
                                     </td>
                                     <td style="width: 160px">
                                         <asp:TextBox ID="inputOwnerAge" runat="server" Width="65px"></asp:TextBox>
                                     </td>
-                                    
                                 </tr>
                                 <tr>
                                     <td align="left" class="style2">
-                                        Spouse</td>
+                                        <asp:Label runat="server" id="lblSpouse" Text="Spouse" />
+                                    </td>
                                     <td align="left" class="style1">
                                         <asp:TextBox ID="inputSpouseName" runat="server" Width="300px"></asp:TextBox>
                                     </td>
                                     <td style="width: 160px">
                                         <asp:TextBox ID="inputSpouseAge" runat="server" Width="65px"></asp:TextBox>
                                     </td>
-                                    
                                 </tr>
                                 <tr>
                                     <td align="left" class="style2">
-                                        Driver</td>
+                                        <asp:Label runat="server" id="lblDrivers" Text="Driver" />
+                                    </td>
                                     <td align="left" class="style1">
                                         <asp:TextBox ID="inputDriverName1" runat="server" Width="300px"></asp:TextBox>
                                     </td>
                                     <td style="width: 160px">
                                         <asp:TextBox ID="inputDriverAge1" runat="server" Width="65px"></asp:TextBox>
                                     </td>
-                                    
                                 </tr>
                                 <tr>
                                     <td align="left" class="style2">
-                                        &nbsp;</td>
+                                        &nbsp;
+                                    </td>
                                     <td align="left" class="style1">
                                         <asp:TextBox ID="inputDriverName2" runat="server" Width="300px"></asp:TextBox>
                                     </td>
                                     <td style="width: 160px">
                                         <asp:TextBox ID="inputDriverAge2" runat="server" Width="65px"></asp:TextBox>
                                     </td>
-                                    
                                 </tr>
                                 <tr id="endRowDriver">
                                     <td align="left" class="style2">
-                                        &nbsp;</td>
+                                        &nbsp;
+                                    </td>
                                     <td align="left" class="style1">
                                         <asp:TextBox ID="inputDriverName3" runat="server" Width="300px"></asp:TextBox>
                                     </td>
                                     <td style="width: 160px">
                                         <asp:TextBox ID="inputDriverAge3" runat="server" Width="65px"></asp:TextBox>
                                     </td>
-                                    
                                 </tr>
                                 <tr>
                                     <td align="left" class="style2">
-                                        &nbsp;</td>
-                                    <td style="width: 660px" colspan=2 align="left">
-                                        <input id="btnInputAddDriver" type="button" value="Add Additional Driver" /></td>
-                                    
-                                    
+                                        &nbsp;
+                                    </td>
+                                    <td style="width: 660px" colspan="2" align="left">
+                                        <input id="btnInputAddAdditionalDriver" type="button" value="Add Additional Driver" />
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td align="left" class="style2">
-                                        Employee</td>
+                                        <asp:Label runat="server" id="lblEmployees" Text="Employees" />
+                                    </td>
                                     <td align="left" class="style1">
                                         <asp:TextBox ID="inputEmployeeName1" runat="server" Width="300px"></asp:TextBox>
                                     </td>
                                     <td style="width: 160px">
                                         <asp:TextBox ID="inputEmployeeAge1" runat="server" Width="65px"></asp:TextBox>
                                     </td>
-                                    
                                 </tr>
                                 <tr>
                                     <td align="left" class="style2">
-                                        &nbsp;</td>
+                                        &nbsp;
+                                    </td>
                                     <td align="left" class="style1">
                                         <asp:TextBox ID="inputEmployeeName2" runat="server" Width="300px"></asp:TextBox>
                                     </td>
                                     <td style="width: 160px">
                                         <asp:TextBox ID="inputEmployeeAge2" runat="server" Width="65px"></asp:TextBox>
                                     </td>
-                                    
                                 </tr>
                                 <tr id="endRowEmployee">
                                     <td align="left" class="style2">
-                                        &nbsp;</td>
+                                        &nbsp;
+                                    </td>
                                     <td align="left" class="style1">
                                         <asp:TextBox ID="inputEmployeeName3" runat="server" Width="300px"></asp:TextBox>
                                     </td>
                                     <td style="width: 160px">
                                         <asp:TextBox ID="inputEmployeeAge3" runat="server" Width="65px"></asp:TextBox>
                                     </td>
-                                    
                                 </tr>
                                 <tr>
                                     <td align="left" class="style2">
-                                        &nbsp;</td>
-                                    <td style="width: 660px" colspan=2 align="left">
-                                        <input id="btnInputAddEmployee" type="button" value="Add Additional Employee" /></td>
-                                    
+                                        &nbsp;
+                                    </td>
+                                    <td style="width: 660px" colspan="2" align="left">
+                                        <input id="btnInputAddAdditionalEmployee" type="button" value="Add Additional Employee" />
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td align="left" class="style2">
-                                        Person Furnished</td>
+                                        <asp:Label runat="server" id="lblPersonsFurnished" Text="Persons Furnished" />
+                                    </td>
                                     <td align="left" class="style1">
                                         <asp:TextBox ID="inputPersonFurnishedName1" runat="server" Width="300px"></asp:TextBox>
                                     </td>
                                     <td style="width: 160px">
                                         <asp:TextBox ID="inputPersonFurnishedAge1" runat="server" Width="65px"></asp:TextBox>
                                     </td>
-                                    
                                 </tr>
                                 <tr>
                                     <td align="left" class="style2">
-                                        &nbsp;</td>
+                                        &nbsp;
+                                    </td>
                                     <td align="left" class="style1">
                                         <asp:TextBox ID="inputPersonFurnishedName2" runat="server" Width="300px"></asp:TextBox>
                                     </td>
                                     <td style="width: 160px">
                                         <asp:TextBox ID="inputPersonFurnishedAge2" runat="server" Width="65px"></asp:TextBox>
                                     </td>
-                                    
                                 </tr>
                                 <tr id="endRowPersonFurnished">
                                     <td align="left" class="style2">
-                                        &nbsp;</td>
+                                        &nbsp;
+                                    </td>
                                     <td align="left" class="style1">
                                         <asp:TextBox ID="inputPersonFurnishedName3" runat="server" Width="300px"></asp:TextBox>
                                     </td>
                                     <td style="width: 160px">
                                         <asp:TextBox ID="inputPersonFurnishedAge3" runat="server" Width="65px"></asp:TextBox>
                                     </td>
-                                    
                                 </tr>
                                 <tr>
                                     <td align="left" class="style2">
-                                        &nbsp;</td>
-                                    <td style="width: 660px" colspan=2 align="left">
-                                        <input id="btnInputAddFurnishedPerson" type="button" 
-                                            value="Add Additional Person Furnished" /></td>
-                                    
+                                        &nbsp;
+                                    </td>
+                                    <td style="width: 660px" colspan="2" align="left">
+                                        <input id="btnInputAddAdditionalPersonFurnished" type="button" value="Add Additional Person Furnished" />
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="3">
                                         <table>
                                             <tr>
                                                 <td style="width: 333px" align="left">
-                                                    &nbsp;</td>
+                                                    &nbsp;
+                                                </td>
                                                 <td align="left" style="width: 127px">
-                                                    &nbsp;</td>
+                                                    &nbsp;
+                                                </td>
                                                 <td style="width: 109px" align="left">
-                                                    &nbsp;</td>
+                                                    &nbsp;
+                                                </td>
                                                 <td align="left" style="width: 100px">
-                                                    &nbsp;</td>
+                                                    &nbsp;
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 333px" align="left">
@@ -1850,7 +1635,8 @@ function masterRead() {
                                         <td style="width: 100px;">
                                         </td>
                                         <td style="width: 100px;">
-                                            &nbsp;</td>
+                                            &nbsp;
+                                        </td>
                                         <td style="width: 100px;">
                                         </td>
                                     </tr>
@@ -1865,7 +1651,8 @@ function masterRead() {
                                             Carrier
                                         </td>
                                         <td style="width: 100px; height: 15px;">
-                                            Loss<br /> Amount Paid
+                                            Loss<br />
+                                            Amount Paid
                                         </td>
                                         <td style="width: 100px; height: 15px;">
                                             Premium
@@ -2259,7 +2046,7 @@ function masterRead() {
                             <table style="width: 680px" border="0" cellpadding="0" cellspacing="0" class="fieldset">
                                 <tr>
                                     <td colspan="2" align="center">
-                                        <asp:Button ID="btnSubmit" runat="server" Text="Submit" />                                        
+                                        <asp:Button ID="btnSubmit" runat="server" Text="Submit" />
                                         <asp:TextBox ID="txtGQID" runat="server" Visible="false" Text="0"></asp:TextBox>
                                     </td>
                                 </tr>
